@@ -37,6 +37,7 @@ contract Factory {
 // [ ] get escrow address
 // [ ] has buyer approved
 // [ ] has seller approved
+// [X] get escrowID approved
 // [ ] get fee amount
 // [ ] get seller amount
 // [ ] total escrow amount
@@ -142,6 +143,9 @@ contract Escrow {
         escrowState = EscrowState.escrowComplete;
         sellerAmount = address(this).balance;
         payable(seller).transfer(address(this).balance);
-        // payable(admin).transfer(address(this).balance);
+    }
+
+    function getEscrowID() public view returns (uint256) {
+        return escrowID;
     }
 }
