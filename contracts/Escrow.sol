@@ -30,30 +30,32 @@ contract Factory {
 // [X] initialize escrow
 // [X] deposit to escrow
 // [X] approve escrow
-// [ ] cancel escrow
-// [ ] destroy escrow
-// [ ] get all deposits
-// [ ] check escrow status
-// [ ] get escrow address
-// [ ] has buyer approved
-// [ ] has seller approved
+// [X] cancel escrow
+// [X] destroy escrow
+// [X] get all deposits
+// [X] check escrow status
+// [X] get escrow address
+// [X] has buyer approved
+// [X] has seller approved
 // [X] get escrowID approved
-// [ ] get fee amount
-// [ ] get seller amount
-// [ ] total escrow amount
-// [ ] has escrow expired
-// [ ] get block number
+// [X] get fee amount
+// [X] get seller amount
+// [X] total escrow amount
+// [X] has escrow expired
+// [X] get block number
 // [X] payout from escrow
 // [X] fee
-// [ ] refund
-// [ ] fall back stop anyother deposits to account
-// [ ] destroy escrow
+// [X] refund
+// [X] fall back stop anyother deposits to account
+// [X] destroy escrow
+// [ ] fallback function for onlybuyer
 
 contract Escrow {
+    mapping(address => uint256) private balances;
+
     address public seller;
     address public buyer;
     address public escrowOwner;
-
     uint256 public blockNumber;
     uint256 public feePercent;
     uint256 public escrowID;
@@ -61,6 +63,9 @@ contract Escrow {
 
     bool public sellerApproval;
     bool public buyerApproval;
+
+    bool public sellerCancel;
+    bool public buyerCancel;
 
     uint256[] public deposits;
     uint256 public feeAmount;
@@ -74,9 +79,7 @@ contract Escrow {
         escrowComplete,
         escrowCancelled
     }
-    EscrowState public escrowState = EscrowState.unInitialized; // unInitialized by default
-
-    mapping(address => uint256) private balances;
+    EscrowState public escrowState = EscrowState.unInitialized;
 
     event Deposit(address depositor, uint256 deposited);
     event ServicePayment(uint256 blockNo, uint256 contractBalance);
@@ -87,32 +90,35 @@ contract Escrow {
         escrowCharge = 0;
     }
 
+    // fallback function for so buyer can only make deposits
+    fallback() external {
+        if (msg.sender != buyer) {
+            revert();
+        }
+    }
+
     function initEscrow(
         address _seller,
         address _buyer,
         uint256 _feePercent,
-        uint256 _blockNumber
-    ) public {
+        uint256 _blockNum
+    ) public onlyEscrowOwner {
         require((_seller != msg.sender) && (_buyer != msg.sender));
-        require(msg.sender == escrowOwner);
-
         escrowID += 1;
         seller = _seller;
         buyer = _buyer;
         feePercent = _feePercent;
-        blockNumber = _blockNumber;
-        escrowState = EscrowState.initialized; // initilizes the EscrowState enum
+        blockNumber = _blockNum;
+        escrowState = EscrowState.initialized;
 
         balances[seller] = 0;
         balances[buyer] = 0;
     }
 
-    function depositToEscrow() public payable {
-        require(msg.sender == buyer);
-        require(blockNumber > block.number);
-
+    function depositToEscrow() public payable checkBlockNumber onlyBuyer {
         balances[buyer] = balances[buyer] + msg.value;
         deposits.push(msg.value);
+        escrowCharge += msg.value;
         escrowState = EscrowState.buyerDeposited;
         emit Deposit(msg.sender, msg.value);
     }
@@ -131,10 +137,96 @@ contract Escrow {
         }
     }
 
-    function fee() private {
-        uint256 totalFee = address(this).balance * (feePercent / 100);
-        feeAmount = totalFee;
-        payable(escrowOwner).transfer(totalFee);
+    function cancelEscrow() public checkBlockNumber {
+        if (msg.sender == seller) {
+            sellerCancel = true;
+        } else if (msg.sender == buyer) {
+            buyerCancel = true;
+        }
+        if (sellerCancel && buyerCancel) {
+            escrowState = EscrowState.escrowCancelled;
+            refund();
+        }
+    }
+
+    function endEscrow() public ifApprovedOrCancelled onlyEscrowOwner {
+        killEscrow();
+    }
+
+    // Getter functions
+    function getEscrowID() public view returns (uint256) {
+        return escrowID;
+    }
+
+    function checkEscrowStatus() public view returns (EscrowState) {
+        return escrowState;
+    }
+
+    function getEscrowContractAddress() public view returns (address) {
+        return address(this);
+    }
+
+    function getAllDeposits() public view returns (uint256[] memory) {
+        return deposits;
+    }
+
+    function hasBuyerApproved() public view returns (bool) {
+        if (buyerApproval) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function hasSellerApproved() public view returns (bool) {
+        if (sellerApproval) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function hasBuyerCancelled() public view returns (bool) {
+        if (buyerCancel) {
+            return true;
+        }
+        return false;
+    }
+
+    function hasSellerCancelled() public view returns (bool) {
+        if (sellerCancel) {
+            return true;
+        }
+        return false;
+    }
+
+    function getFeeAmount() public view returns (uint256) {
+        return feeAmount;
+    }
+
+    function getSellermount() public view returns (uint256) {
+        return sellerAmount;
+    }
+
+    function totalEscrowBalance() public view returns (uint256) {
+        return address(this).balance;
+    }
+
+    function hasEscrowExpired() public view returns (bool) {
+        if (blockNumber > block.number) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function getBlockNumber() public view returns (uint256) {
+        return block.number;
+    }
+
+    // private and internal
+    function killEscrow() internal {
+        selfdestruct(payable(escrowOwner));
     }
 
     function payOutFromEscrow() private {
@@ -145,7 +237,38 @@ contract Escrow {
         payable(seller).transfer(address(this).balance);
     }
 
-    function getEscrowID() public view returns (uint256) {
-        return escrowID;
+    function fee() private {
+        uint256 totalFee = address(this).balance * (feePercent / 100);
+        feeAmount = totalFee;
+        payable(escrowOwner).transfer(totalFee);
+    }
+
+    function refund() private {
+        payable(buyer).transfer(address(this).balance);
+    }
+
+    // modifiers
+    modifier onlyBuyer() {
+        require(msg.sender == buyer, "only buyer");
+        _;
+    }
+
+    modifier onlyEscrowOwner() {
+        require(msg.sender == escrowOwner, "only escrow owner");
+        _;
+    }
+
+    modifier checkBlockNumber() {
+        require(blockNumber > block.number, "escrow time has ended");
+        _;
+    }
+
+    modifier ifApprovedOrCancelled() {
+        require(
+            (escrowState == EscrowState.serviceApproved) ||
+                (escrowState == EscrowState.escrowCancelled),
+            "not approved or cancelled"
+        );
+        _;
     }
 }

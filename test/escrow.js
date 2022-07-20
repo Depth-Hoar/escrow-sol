@@ -14,12 +14,10 @@ describe('Factory', function () {
 
 });
 
-
 describe('Escrow', function () {
 
-
   beforeEach(async () => {
-    [escrowOwner, seller, buyer] = await ethers.getSigners();
+    [escrowOwner, seller, buyer, externalWallet] = await ethers.getSigners();
     const EscrowContract = await ethers.getContractFactory('Escrow');
     escrow = await EscrowContract.deploy(escrowOwner.address, 0);
     await escrow.deployed();
@@ -31,10 +29,57 @@ describe('Escrow', function () {
     expect(escrowID).to.equal(1);
 	});
 
-  it('should give the amount deposited by the buyer in the escrow as 10', async function() {
+  it('should give 10 eth of a deposit from the buyer', async function() {
     await escrow.connect(buyer).depositToEscrow({value: ethers.utils.parseEther('10')});
-    balance = await ethers.provider.getBalance(escrow.address);
-    expect(balance.toString()).to.equal(ethers.utils.parseEther('10'));
+    escrowBalance = await ethers.provider.getBalance(escrow.address);
+    expect(escrowBalance.toString()).to.equal(ethers.utils.parseEther('10'));
 	});
 
+  it('should allow the buyer and the seller to approve escrow and escrow complete with 0 balance', async function() {
+    await escrow.connect(buyer).depositToEscrow({value: ethers.utils.parseEther('10')});
+    await escrow.connect(seller).approveEscrow()
+    await escrow.connect(buyer).approveEscrow()
+    state = await escrow.checkEscrowStatus();
+    expect(state).to.equal(4); // escrowComplete
+    escrowBalance = await ethers.provider.getBalance(escrow.address);
+    expect(escrowBalance).to.equal(0);
+	});
+
+  it('should allow the buyer and seller to cancel the escrow', async function() {
+    await escrow.connect(buyer).depositToEscrow({value: ethers.utils.parseEther('10')});
+    await escrow.connect(seller).cancelEscrow();
+    await escrow.connect(buyer).cancelEscrow();
+    state = await escrow.checkEscrowStatus();
+    expect(state).to.equal(5); // escrowCancelled
+    escrowBalance = await ethers.provider.getBalance(escrow.address);
+    expect(escrowBalance).to.equal(0);
+	});
+
+  it('should NOT allow the escrow owner to end the escrow before its approved or cancelled', async function() {
+    await escrow.connect(buyer).depositToEscrow({value: ethers.utils.parseEther('10')});
+    endEscrow = escrow.connect(escrowOwner).endEscrow();
+    await expect(endEscrow).to.revertedWith('not approved or cancelled');
+    state = await escrow.checkEscrowStatus();
+    expect(state).to.equal(2); // buyerDeposited
+	});
+
+  it('only escrow owner should be able to end the escrow', async function() {
+    await escrow.connect(buyer).depositToEscrow({value: ethers.utils.parseEther('10')});
+    await escrow.connect(seller).cancelEscrow();
+    await escrow.connect(buyer).cancelEscrow();
+    endEscrow = escrow.connect(externalWallet).endEscrow();
+    await expect(endEscrow).to.revertedWith('only escrow owner');
+	});
+
+  it('should revert if eth is sent', async function() {
+    // exDeposit = escrow.connect(externalWallet).depositToEscrow({value: ethers.utils.parseEther('10')});
+    // await expect(exDeposit).to.revertedWith('only buyer');
+    await externalWallet.sendTransaction({
+      to: escrow.address,  
+      value: ethers.utils.parseEther('1')
+    });
+
+  });
+
 });
+
