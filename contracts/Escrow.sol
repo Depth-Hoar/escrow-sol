@@ -48,7 +48,7 @@ contract Factory {
 // [X] refund
 // [X] fall back stop anyother deposits to account
 // [X] destroy escrow
-// [ ] fallback function for onlybuyer
+// [X] recieve & fallback function for onlybuyer
 
 contract Escrow {
     mapping(address => uint256) private balances;
@@ -90,11 +90,13 @@ contract Escrow {
         escrowCharge = 0;
     }
 
+    receive() external payable onlyBuyer {
+        revert();
+    }
+
     // fallback function for so buyer can only make deposits
-    fallback() external {
-        if (msg.sender != buyer) {
-            revert();
-        }
+    fallback() external payable {
+        revert();
     }
 
     function initEscrow(

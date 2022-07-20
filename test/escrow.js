@@ -14,6 +14,7 @@ describe('Factory', function () {
 
 });
 
+
 describe('Escrow', function () {
 
   beforeEach(async () => {
@@ -71,15 +72,12 @@ describe('Escrow', function () {
     await expect(endEscrow).to.revertedWith('only escrow owner');
 	});
 
-  it('should revert if eth is sent', async function() {
-    // exDeposit = escrow.connect(externalWallet).depositToEscrow({value: ethers.utils.parseEther('10')});
-    // await expect(exDeposit).to.revertedWith('only buyer');
-    await externalWallet.sendTransaction({
+  it('only buyer can deposit to escrow', async function() {
+    tx = externalWallet.sendTransaction({
       to: escrow.address,  
       value: ethers.utils.parseEther('1')
     });
-
+    await expect(tx).to.revertedWith('only buyer');
   });
 
 });
-
