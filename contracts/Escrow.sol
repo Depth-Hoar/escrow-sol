@@ -26,30 +26,6 @@ contract Factory {
     }
 }
 
-// TODO
-// [X] initialize escrow
-// [X] deposit to escrow
-// [X] approve escrow
-// [X] cancel escrow
-// [X] destroy escrow
-// [X] get all deposits
-// [X] check escrow status
-// [X] get escrow address
-// [X] has buyer approved
-// [X] has seller approved
-// [X] get escrowID approved
-// [X] get fee amount
-// [X] get seller amount
-// [X] total escrow amount
-// [X] has escrow expired
-// [X] get block number
-// [X] payout from escrow
-// [X] fee
-// [X] refund
-// [X] fall back stop anyother deposits to account
-// [X] destroy escrow
-// [X] recieve & fallback function for onlybuyer
-
 contract Escrow {
     mapping(address => uint256) private balances;
 
@@ -88,15 +64,6 @@ contract Escrow {
         escrowOwner = _escrowOwner;
         escrowID = _escrowID;
         escrowCharge = 0;
-    }
-
-    receive() external payable onlyBuyer {
-        revert();
-    }
-
-    // fallback function for so buyer can only make deposits
-    fallback() external payable {
-        revert();
     }
 
     function initEscrow(
@@ -272,5 +239,13 @@ contract Escrow {
             "not approved or cancelled"
         );
         _;
+    }
+
+    receive() external payable onlyBuyer {
+        revert();
+    }
+
+    fallback() external payable {
+        revert();
     }
 }

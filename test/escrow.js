@@ -37,7 +37,7 @@ describe('Escrow', function () {
 	});
 
   it('should allow the buyer and the seller to approve escrow and escrow complete with 0 balance', async function() {
-    await escrow.connect(buyer).depositToEscrow({value: ethers.utils.parseEther('10')});
+    await escrow.connect(buyer).depositToEscrow({value: ethers.utils.parseEther('10')});cd
     await escrow.connect(seller).approveEscrow()
     await escrow.connect(buyer).approveEscrow()
     state = await escrow.checkEscrowStatus();
