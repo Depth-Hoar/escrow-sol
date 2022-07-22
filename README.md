@@ -6,6 +6,11 @@ run tests
 npx hardhat test test/escrow.js
 ```
 
+to deploy locally
+```shell
+npx hardhat run --network localhost scripts/deploy.js
+```
+
 example hardhat commands
 
 ```shell

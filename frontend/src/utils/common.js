@@ -1,5 +1,5 @@
 import { ethers, Contract } from "ethers";
-import DAOArtifact from "../abis/DAO.json";
+import FactoryArtifact from "../abis/Factory.json";
 import ContractAddress from "../abis/contract-address.json";
 import Swal from "sweetalert2";
 
