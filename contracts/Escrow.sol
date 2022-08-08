@@ -241,9 +241,7 @@ contract Escrow {
         _;
     }
 
-    receive() external payable onlyBuyer {
-        revert();
-    }
+    receive() external payable onlyBuyer {}
 
     fallback() external payable {
         revert();

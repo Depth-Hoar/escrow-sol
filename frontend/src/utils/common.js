@@ -12,15 +12,15 @@ const getBlockchain = () =>
       const signer = provider.getSigner();
       const signerAddress = await signer.getAddress();
 
-      const DAOContract = new Contract(
-        ContractAddress.DAO,
-        DAOArtifact.abi,
+      const FactoryContract = new Contract(
+        ContractAddress.Factory,
+        FactoryArtifact.abi,
         signer
       );
 
-      resolve({ signerAddress, DAOContract });
+      resolve({ signerAddress, FactoryContract });
     }
-    resolve({ signerAddress: undefined, DAOContract: undefined });
+    resolve({ signerAddress: undefined, FactoryContract: undefined });
   });
 
 function showError(error) {

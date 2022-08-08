@@ -1,0 +1,95 @@
+// import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import { Button, Paper, Stack, Typography, TextField, Grid } from "@mui/material";
+import { ExpandMore } from '@mui/icons-material';
+// import { getBlockchain, showError } from "./utils/common";
+import ContractAddress from "../abis/contract-address.json";
+import NavBar from "../components/navbar.js";
+import WalletCard from "../components/wallet.js";
+// import { red } from '@mui/material/colors';
+import { styled } from '@mui/material/styles';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Masonry from '@mui/lab/Masonry';
+import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
+import Box from '@mui/material/Box';
+
+// const heights = [150, 150];
+
+// const StyledAccordion = styled(Accordion)(({ theme }) => ({
+//   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+//   color: theme.palette.text.secondary,
+// }));
+
+// const data = await getBlockchain();
+
+const contractAddress = ContractAddress.Factory;
+console.log(contractAddress,"contract");
+
+function Home() {
+  return (
+    <div>
+    <NavBar></NavBar>
+    <div className="App">
+      <header className="App-header">
+      <Typography variant="h3" p={3}>
+          Escrow Decentralized Application
+        </Typography>
+        <Box sx={{ minHeight: 377 }} p={10}>
+      <Masonry columns={2} spacing={5}>
+        <Box sx={{ minHeight: 377 }}>
+          <Typography variant='h5'>
+            Create a new Escrow Contract
+          </Typography>
+          <Paper  elevation={3} sx={{ p: 4, padding:10, align: 'left',   display: 'flex'}}>
+            The address which creates the new Escrow contract is the owner of the contract. This address is responsible for correctly initializing the buyer and seller addresses as well as resolve disputes.
+          </Paper>
+          <ExpandMore />
+          <Paper  elevation={3} sx={{ p: 4, padding:10, align: 'left',   display: 'flex'}}>
+            The buyer can independently deposit ethers into the escrow any number of times.
+          </Paper>
+          <ExpandMore sx={{paddingRight:20, align: 'left', }} />
+          <ExpandMore sx={{paddingLeft:20, align: 'right',   }} />
+          <Masonry columns={2} spacing={5} sx={{ padding:5}}>
+            <Paper  elevation={3} sx={{ padding:2, align: 'left'}}>
+              Both the buyer and the seller need to press the Approve button to get the deal approved. Once both have approved, the escrow will pay out the decided percentage of the contract deposits to the fee and the remaining to the seller automatically.
+            </Paper>
+            <Paper  elevation={3} sx={{ padding:2, align: 'right'}}>
+              In case both the buyer and seller decide not to go ahead with the escrow, both need to press the Cancel button to cancel the escrow. No fee will be charged by the owner in this case and the entire buyer deposit will be transferred back to the buyer.
+            </Paper>
+          </Masonry>
+          <Paper  elevation={3} sx={{ p: 4, padding:10, align: 'left',   display: 'flex'}}>
+          Neither the creators of the escrow platform nor the owner will have any authority to launder with the money deposited into the smart contract. But they are no way accountable for any monetary losses incurred.
+          </Paper>
+          <Button variant='contained'>
+            Create New Escrow Contract
+          </Button>
+        </Box>
+        <Box sx={{ minHeight: 377 }}>
+          <Typography variant='h5'>
+            Load an existing Escrow Contract
+          </Typography>
+          <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+          <Button variant='contained'>
+            Load Escrow Contract
+          </Button>
+          <Typography variant='h6'>
+            All escrows created on this platform:
+          </Typography>
+        </Box>
+      </Masonry>
+    </Box>
+      </header>
+    </div>
+    <Grid container sx={{ justifyContent: 'center' }}>
+
+        <WalletCard  />
+        {/* <p>
+          {(contractAddress).toString()}
+        </p> */}
+
+        </Grid>
+    </div>
+  );
+}
+
+export default Home;
