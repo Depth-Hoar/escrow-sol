@@ -1,13 +1,38 @@
 import { ThemeProvider, AppBar, Toolbar, IconButton, Typography, Box } from '@mui/material'
 import { Menu } from '@mui/icons-material';
 // import { getBlockchain, showError } from "./utils/common.js";
+import { showError } from "../utils/common";
 
 import { ethers } from "ethers";
 import React, { useEffect, useState } from "react";
 
 
 
-const NavBar = () => {
+const NavBar = ({ blockchain }) => {
+  const [show, setShow] = useState(false);
+
+  const add = () => {
+    setShow(true);
+  };
+  const handleClose = () => {
+    setShow(false);
+  };
+
+  // const handleSubmit = async (e) => {
+  const escrow = async (e) => {
+    e.preventDefault();
+    try {
+      await blockchain.factory.createContract();
+    } catch (error) {
+      showError(error);
+    }
+    handleClose();
+  };
+
+
+
+
+
 
   // const getShares = async () => {
   //   const { DAOContract, signerAddress } = await getBlockchain();
@@ -33,8 +58,6 @@ const NavBar = () => {
 //     method: "eth_getBalance",        
 //     params: [newAccount.toString(), "latest"],      
 // });
-
-
 
 
 

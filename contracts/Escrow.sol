@@ -122,6 +122,29 @@ contract Escrow {
         killEscrow();
     }
 
+    // private and internal
+    function killEscrow() internal {
+        selfdestruct(payable(escrowOwner));
+    }
+
+    function payOutFromEscrow() private {
+        balances[buyer] = balances[buyer] - address(this).balance;
+        balances[seller] = balances[seller] + address(this).balance;
+        escrowState = EscrowState.escrowComplete;
+        sellerAmount = address(this).balance;
+        payable(seller).transfer(address(this).balance);
+    }
+
+    function fee() private {
+        uint256 totalFee = address(this).balance * (feePercent / 100);
+        feeAmount = totalFee;
+        payable(escrowOwner).transfer(totalFee);
+    }
+
+    function refund() private {
+        payable(buyer).transfer(address(this).balance);
+    }
+
     // Getter functions
     function getEscrowID() public view returns (uint256) {
         return escrowID;
@@ -191,29 +214,6 @@ contract Escrow {
 
     function getBlockNumber() public view returns (uint256) {
         return block.number;
-    }
-
-    // private and internal
-    function killEscrow() internal {
-        selfdestruct(payable(escrowOwner));
-    }
-
-    function payOutFromEscrow() private {
-        balances[buyer] = balances[buyer] - address(this).balance;
-        balances[seller] = balances[seller] + address(this).balance;
-        escrowState = EscrowState.escrowComplete;
-        sellerAmount = address(this).balance;
-        payable(seller).transfer(address(this).balance);
-    }
-
-    function fee() private {
-        uint256 totalFee = address(this).balance * (feePercent / 100);
-        feeAmount = totalFee;
-        payable(escrowOwner).transfer(totalFee);
-    }
-
-    function refund() private {
-        payable(buyer).transfer(address(this).balance);
     }
 
     // modifiers

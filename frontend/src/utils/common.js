@@ -12,15 +12,15 @@ const getBlockchain = () =>
       const signer = provider.getSigner();
       const signerAddress = await signer.getAddress();
 
-      const FactoryContract = new Contract(
+      const factory = new Contract(
         ContractAddress.Factory,
         FactoryArtifact.abi,
         signer
       );
 
-      resolve({ signerAddress, FactoryContract });
+      resolve({ signerAddress, factory });
     }
-    resolve({ signerAddress: undefined, FactoryContract: undefined });
+    resolve({ signerAddress: undefined, factory: undefined });
   });
 
 function showError(error) {
@@ -32,3 +32,4 @@ function showError(error) {
 }
 
 export { getBlockchain, showError };
+export default getBlockchain;

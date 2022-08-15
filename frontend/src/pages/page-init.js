@@ -4,7 +4,6 @@ import { Button, Paper, Stack, Typography, TextField, Grid, Box } from "@mui/mat
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 // import { getBlockchain, showError } from "./utils/common";
 import ContractAddress from "../abis/contract-address.json";
-import NavBar from "../components/navbar.js";
 import WalletCard from "../components/wallet.js";
 
 
@@ -32,7 +31,6 @@ console.log(contractAddress,"contract");
 function Home() {
   return (
     <div>
-    <NavBar></NavBar>
     <div className="App">
       <header className="App-header">
       {/* <ThemeProvider theme={theme}> */}

@@ -1,17 +1,19 @@
 // import './App.css';
-import { BrowserRouter } from 'react-router-dom';
+// import { BrowserRouter } from 'react-router-dom';
 import { Button, Paper, Stack, Typography, TextField, Grid } from "@mui/material";
 import { ExpandMore } from '@mui/icons-material';
 // import { getBlockchain, showError } from "./utils/common";
 import ContractAddress from "../abis/contract-address.json";
-import NavBar from "../components/navbar.js";
 import WalletCard from "../components/wallet.js";
 // import { red } from '@mui/material/colors';
-import { styled } from '@mui/material/styles';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+// import { styled } from '@mui/material/styles';
+// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Masonry from '@mui/lab/Masonry';
-import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
+// import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import Box from '@mui/material/Box';
+import { showError, getBlockchain } from "../utils/common";
+import React, { useEffect, useState } from "react";
+
 
 // const heights = [150, 150];
 
@@ -25,10 +27,68 @@ import Box from '@mui/material/Box';
 const contractAddress = ContractAddress.Factory;
 console.log(contractAddress,"contract");
 
-function Home() {
+
+
+function Home({ blockchain }) {
+
+  // const [show, setShow] = useState(false);
+
+  // const add = () => {
+  //   setShow(true);
+  // };
+  // const handleClose = () => {
+  //   setShow(false);
+  // };
+
+  const newEscrow = async () => {
+    try {
+      await blockchain.factory.createContract();
+    } 
+    catch (error) {
+      showError(error);
+    }
+    // handleClose();
+  };
+
+  // const allEscrows = blockchain.factory.allEscrowContracts.toString();
+
+  // const escrowList = allEscrows();
+  
+
+  // console.log(newEscrow, "newEscrow");
+  // console.log(allEscrows, "all escrows");
+
+
+  // const newEscrow = async () => {
+  //   try {
+  //     await blockchain.factory.createContract();
+  //     setOffer(0);
+  //   } catch (error) {
+  //     showError(error);
+  //   }
+  // };
+
+
+  // useEffect(() => {
+  //   (async () => {
+  //     blockchain.ebay && setAuctions(await blockchain.ebay.getAuctions());
+  //   })();
+  // }, [blockchain]);
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await blockchain.factory.getAllContracts();
+  //   } catch (error) {
+  //     showError(error);
+  //   }
+  //   handleClose();
+  // };
+
+
+
   return (
     <div>
-    <NavBar></NavBar>
     <div className="App">
       <header className="App-header">
       <Typography variant="h3" p={3}>
@@ -60,7 +120,7 @@ function Home() {
           <Paper  elevation={3} sx={{ p: 4, padding:10, align: 'left',   display: 'flex'}}>
           Neither the creators of the escrow platform nor the owner will have any authority to launder with the money deposited into the smart contract. But they are no way accountable for any monetary losses incurred.
           </Paper>
-          <Button variant='contained'>
+          <Button variant='contained' onClick={newEscrow} >
             Create New Escrow Contract
           </Button>
         </Box>
@@ -75,6 +135,9 @@ function Home() {
           <Typography variant='h6'>
             All escrows created on this platform:
           </Typography>
+          {/* <Typography variant='h6'>
+            {allEscrows}
+          </Typography> */}
         </Box>
       </Masonry>
     </Box>
