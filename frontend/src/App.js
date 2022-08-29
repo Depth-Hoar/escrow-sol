@@ -21,9 +21,6 @@ import Deposit from './pages/page-deposit';
 // const data = await getBlockchain();
 
 
-const contractAddress = ContractAddress.Factory;
-console.log(contractAddress,"contract");
-
 function App() {
 
   const [blockchain, setBlockchain] = useState({});

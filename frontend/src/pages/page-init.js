@@ -25,9 +25,6 @@ import WalletCard from "../components/wallet.js";
 // });
 
 
-const contractAddress = ContractAddress.Factory;
-console.log(contractAddress,"contract");
-
 function Home() {
   return (
     <div>

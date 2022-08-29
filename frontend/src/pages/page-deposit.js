@@ -29,8 +29,6 @@ import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 // });
 
 
-const contractAddress = ContractAddress.Factory;
-console.log(contractAddress,"contract");
 
 function Home() {
   return (

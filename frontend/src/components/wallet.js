@@ -52,7 +52,7 @@ const WalletCard = () => {
 
   return (
     <Box justifyContent="center" p={5} align='center' >
-    <Paper elevation={10} align='center' sx={{ p: 4, padding:10, maxWidth: 377}}>
+    <Paper elevation={10} align='center' sx={{ p: 4, padding:10, maxWidth: 500}}>
       <Stack spacing={2}>
         <Typography variant="h6"> Account: {account} </Typography>
         <Typography variant="h6">

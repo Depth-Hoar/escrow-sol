@@ -9,25 +9,25 @@ import React, { useEffect, useState } from "react";
 
 
 const NavBar = ({ blockchain }) => {
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
 
-  const add = () => {
-    setShow(true);
-  };
-  const handleClose = () => {
-    setShow(false);
-  };
+  // const add = () => {
+  //   setShow(true);
+  // };
+  // const handleClose = () => {
+  //   setShow(false);
+  // };
 
-  // const handleSubmit = async (e) => {
-  const escrow = async (e) => {
-    e.preventDefault();
-    try {
-      await blockchain.factory.createContract();
-    } catch (error) {
-      showError(error);
-    }
-    handleClose();
-  };
+  // // const handleSubmit = async (e) => {
+  // const escrow = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await blockchain.factory.createContract();
+  //   } catch (error) {
+  //     showError(error);
+  //   }
+  //   handleClose();
+  // };
 
 
 

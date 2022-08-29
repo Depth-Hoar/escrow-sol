@@ -2,9 +2,9 @@
 // import { BrowserRouter } from 'react-router-dom';
 import { Button, Paper, Stack, Typography, TextField, Grid } from "@mui/material";
 import { ExpandMore } from '@mui/icons-material';
-// import { getBlockchain, showError } from "./utils/common";
 import ContractAddress from "../abis/contract-address.json";
 import WalletCard from "../components/wallet.js";
+import EscrowList from "../components/escrowList"
 // import { red } from '@mui/material/colors';
 // import { styled } from '@mui/material/styles';
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -31,14 +31,10 @@ console.log(contractAddress,"contract");
 
 function Home({ blockchain }) {
 
-  // const [show, setShow] = useState(false);
+  const [escrows, setEscrows] = useState([]);
+  const [escrow, setEscrow] = useState('');
 
-  // const add = () => {
-  //   setShow(true);
-  // };
-  // const handleClose = () => {
-  //   setShow(false);
-  // };
+
 
   const newEscrow = async () => {
     try {
@@ -50,40 +46,38 @@ function Home({ blockchain }) {
     // handleClose();
   };
 
-  // const allEscrows = blockchain.factory.allEscrowContracts.toString();
 
-  // const escrowList = allEscrows();
-  
+  const getEscrows = async () => {
+    const { factory, signerAddress } = await getBlockchain();
 
-  // console.log(newEscrow, "newEscrow");
-  // console.log(allEscrows, "all escrows");
+    try {
+      await factory.deployed();
+      setEscrows( await factory.getAllContracts());
+      // await factory.getByID();
+      
+      // signerAddress && await Factory.admin() == signerAddress;
+    } catch (error) {
+      showError(error);
+    }
+  };
 
+  useEffect(() => {
+    getEscrows();
+  }, []);
 
-  // const newEscrow = async () => {
-  //   try {
-  //     await blockchain.factory.createContract();
-  //     setOffer(0);
-  //   } catch (error) {
-  //     showError(error);
-  //   }
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (escrow) {
+      //console.log(escrow);
+    }
+    // } catch (error) {
+    //   showError(error);
+    }
+    // handleClose();
 
-
-  // useEffect(() => {
-  //   (async () => {
-  //     blockchain.ebay && setAuctions(await blockchain.ebay.getAuctions());
-  //   })();
-  // }, [blockchain]);
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await blockchain.factory.getAllContracts();
-  //   } catch (error) {
-  //     showError(error);
-  //   }
-  //   handleClose();
-  // };
+    // let loadEscrow = async () => {
+    //   const { escrowContract, setEscrow } = await e.target.value;
+    // }
 
 
 
@@ -128,29 +122,43 @@ function Home({ blockchain }) {
           <Typography variant='h5'>
             Load an existing Escrow Contract
           </Typography>
-          <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-          <Button variant='contained'>
-            Load Escrow Contract
-          </Button>
+          <form noValidate autoComplete='off' onSubmit={handleSubmit}>
+            <TextField 
+              // onSubmit={handleSubmit}
+              // onChange={(e) => setEscrow(e.target.value)}
+              onChange={(e) => setEscrow(console.log(e.target.value, 'value'))}
+              id="outlined-basic" 
+              label="Escrow Address" 
+              variant="outlined" 
+              // error={true}
+              />
+            <Button 
+              // onClick={() => c}
+              type='submit'
+              variant='contained'>
+              Load Escrow Contract
+            </Button>
+          </form>
           <Typography variant='h6'>
             All escrows created on this platform:
           </Typography>
-          {/* <Typography variant='h6'>
-            {allEscrows}
-          </Typography> */}
+          {escrows.map((escrow) => (
+         <Typography key={escrow.escrowCount}>
+         {/* TODO add key for mapping */}
+            {/* {blockchain.factory.allEscrowContracts.toString()} */}
+            {escrow.toString()}
+            {/* {console.log(escrow.escrowCount,'escrow count')} */}
+          </Typography>
+          ))}
+
         </Box>
       </Masonry>
     </Box>
       </header>
     </div>
     <Grid container sx={{ justifyContent: 'center' }}>
-
-        <WalletCard  />
-        {/* <p>
-          {(contractAddress).toString()}
-        </p> */}
-
-        </Grid>
+      <WalletCard  />
+    </Grid>
     </div>
   );
 }
