@@ -3,6 +3,7 @@
 import { Button, Paper, Stack, Typography, TextField, Grid } from "@mui/material";
 import { ExpandMore } from '@mui/icons-material';
 import ContractAddress from "../abis/contract-address.json";
+import EscrowArtifact from "../abis/Escrow.json";
 import WalletCard from "../components/wallet.js";
 import EscrowList from "../components/escrowList"
 // import { red } from '@mui/material/colors';
@@ -13,6 +14,8 @@ import Masonry from '@mui/lab/Masonry';
 import Box from '@mui/material/Box';
 import { showError, getBlockchain } from "../utils/common";
 import React, { useEffect, useState } from "react";
+
+import { ethers, Contract } from "ethers";
 
 
 // const heights = [150, 150];
@@ -31,7 +34,9 @@ console.log(contractAddress,"contract");
 
 function Home({ blockchain }) {
 
+  // list of escrows
   const [escrows, setEscrows] = useState([]);
+  // input
   const [escrow, setEscrow] = useState('');
 
 
@@ -46,38 +51,26 @@ function Home({ blockchain }) {
     // handleClose();
   };
 
-
-  const getEscrows = async () => {
-    const { factory, signerAddress } = await getBlockchain();
-
-    try {
-      await factory.deployed();
-      setEscrows( await factory.getAllContracts());
-      // await factory.getByID();
-      
-      // signerAddress && await Factory.admin() == signerAddress;
-    } catch (error) {
-      showError(error);
-    }
-  };
-
   useEffect(() => {
-    getEscrows();
-  }, []);
+    (async () => {
+      blockchain.factory && setEscrows(await blockchain.factory.getAllContracts());
+    })();
+  }, [blockchain]);
 
+  // console.log(blockchain,'blockchain');
+
+  
+  
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (escrow) {
-      //console.log(escrow);
+    const loadEscrow = escrow;
+    console.log(loadEscrow, 'loadEscrow');
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const newEscrow = new ethers.Contract(toString(loadEscrow), EscrowArtifact, provider);
+    console.log(newEscrow, 'newEscrow');
     }
-    // } catch (error) {
-    //   showError(error);
-    }
-    // handleClose();
 
-    // let loadEscrow = async () => {
-    //   const { escrowContract, setEscrow } = await e.target.value;
-    // }
 
 
 
@@ -126,7 +119,8 @@ function Home({ blockchain }) {
             <TextField 
               // onSubmit={handleSubmit}
               // onChange={(e) => setEscrow(e.target.value)}
-              onChange={(e) => setEscrow(console.log(e.target.value, 'value'))}
+              // onChange={(e) => setEscrow(console.log(e.target.value, 'value'))}
+              onChange={(e) => setEscrow(e.target.value)}
               id="outlined-basic" 
               label="Escrow Address" 
               variant="outlined" 
@@ -134,6 +128,7 @@ function Home({ blockchain }) {
               />
             <Button 
               // onClick={() => c}
+              // onClick={handleSubmit}
               type='submit'
               variant='contained'>
               Load Escrow Contract
@@ -142,11 +137,12 @@ function Home({ blockchain }) {
           <Typography variant='h6'>
             All escrows created on this platform:
           </Typography>
-          {escrows.map((escrow) => (
-         <Typography key={escrow.escrowCount}>
+          {escrows.map((escrows) => (
+         <Typography key={escrows}>
          {/* TODO add key for mapping */}
             {/* {blockchain.factory.allEscrowContracts.toString()} */}
-            {escrow.toString()}
+            {escrows}
+            {/* {console.log(escrow,'doyoooooooooooooo')} */}
             {/* {console.log(escrow.escrowCount,'escrow count')} */}
           </Typography>
           ))}

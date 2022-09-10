@@ -123,6 +123,7 @@ contract Escrow {
     }
 
     // private and internal
+    // TODO add logic to decide wether to destroy or not boolean
     function killEscrow() internal {
         selfdestruct(payable(escrowOwner));
     }
