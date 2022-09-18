@@ -19,7 +19,7 @@ async function main() {
   saveFrontendFiles(factory);
 }
 
-// the magical code that links you contract to the frontend
+// the magical code that links your contract to the frontend
 function saveFrontendFiles(contract) {
   const fs = require("fs");
   const contractsDir = __dirname + "/../frontend/src/abis";

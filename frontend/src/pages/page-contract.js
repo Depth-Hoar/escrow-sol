@@ -11,6 +11,10 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Masonry from '@mui/lab/Masonry';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 
+// import { Home } from './page-home';
+import { showError, getBlockchain } from "../utils/common";
+import { array } from './page-home';
+
 
 // const heights = [150, 150];
 
@@ -30,7 +34,32 @@ import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 
 
 
-function Home() {
+
+//================================= You need to figure out how to import form data ==========================================
+function Contract({ blockchain }) {
+
+  const Escrow = array[0];
+  // console.log(newEscrow, 'new escrow!!')
+
+  const initEscrow = async (newEscrow) => {
+    try {
+      // await Escrow.initEscrow();
+      const id = await Escrow.getEscrowID();
+      // console.log(blockchain.newEscrow, 'newEscrow');
+      // console.log(Home.newEscrow, 'newEscrow!!!');
+      console.log(id,'id');
+    } 
+    catch (error) {
+      showError(error);
+    }
+    // handleClose();
+  };
+
+  
+  console.log(Escrow,'Escrow')
+
+
+
   return (
     <div>
     <div className="App">
@@ -40,12 +69,37 @@ function Home() {
           Escrow Contract Options
         </Typography>
         <Grid container sx={{ justifyContent: 'center' }}>
-        <Box sx={{ width: 300,'& button': { m: 2 } }} >
-        <Button variant='contained' >Init Escrow</Button>
-        <Button variant='contained' >Buyer Deposit</Button>
-        <Button variant='contained' >Escrow Approval</Button>
-        <Button variant='contained' >Cancel Escrow</Button>
-        </Box>
+        <form noValidate autoComplete='off' >
+          <TextField 
+            id="outlined-basic" 
+            label="Seller Address" 
+            variant="outlined" 
+            />
+          <TextField 
+            id="outlined-basic" 
+            label="Buyer Address" 
+            variant="outlined" 
+            />
+          <TextField 
+            id="outlined-basic" 
+            label="Fee Percentage" 
+            variant="outlined" 
+            />
+          <TextField 
+            id="outlined-basic" 
+            label="Block Number" 
+            variant="outlined" 
+            />
+          <Button variant='contained' onClick={initEscrow} >
+          Init Escrow
+          </Button>
+
+          <Box sx={{ width: 300,'& button': { m: 2 } }} >
+          <Button variant='contained' >Buyer Deposit</Button>
+          <Button variant='contained' >Escrow Approval</Button>
+          <Button variant='contained' >Cancel Escrow</Button>
+          </Box>
+          </form>
         </Grid>
 
         <Grid container sx={{ justifyContent: 'center' }}>
@@ -63,4 +117,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Contract;

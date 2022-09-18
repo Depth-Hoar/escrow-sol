@@ -17,6 +17,8 @@ import React, { useEffect, useState } from "react";
 
 import { ethers, Contract } from "ethers";
 
+import { Outlet, Link, Redirect, useNavigate } from 'react-router-dom';
+
 
 // const heights = [150, 150];
 
@@ -30,7 +32,8 @@ import { ethers, Contract } from "ethers";
 const contractAddress = ContractAddress.Factory;
 console.log(contractAddress,"contract");
 
-
+const array = [];
+console.log(array, 'array2')
 
 function Home({ blockchain }) {
 
@@ -38,6 +41,8 @@ function Home({ blockchain }) {
   const [escrows, setEscrows] = useState([]);
   // input
   const [escrow, setEscrow] = useState('');
+
+  const navigate = useNavigate();
 
 
 
@@ -53,6 +58,7 @@ function Home({ blockchain }) {
 
   useEffect(() => {
     (async () => {
+      console.log(blockchain.factory, 'factory');
       blockchain.factory && setEscrows(await blockchain.factory.getAllContracts());
     })();
   }, [blockchain]);
@@ -60,19 +66,36 @@ function Home({ blockchain }) {
   // console.log(blockchain,'blockchain');
 
   
+
   
-  
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const loadEscrow = escrow;
     console.log(loadEscrow, 'loadEscrow');
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const newEscrow = new ethers.Contract(toString(loadEscrow), EscrowArtifact, provider);
+    const newEscrow = new ethers.Contract(loadEscrow, EscrowArtifact, provider);
     console.log(newEscrow, 'newEscrow');
-    }
+    array.push(newEscrow);
+    console.log(array, 'array1')
+  
 
+    // const fs = require("fs");
 
+    // // const fs = require("fs");
+    // const contractsDir = __dirname + "/../frontend/src/abis";
+    // // if (!fs.existsSync(contractsDir)) {
+    // //   fs.mkdirSync(contractsDir);
+    // // }
+    // fs.writeFileSync(
+    //   contractsDir + "/escrow-address.json",
+    //   JSON.stringify({ Factory: newEscrow.address }, undefined, 2)
+    // );
+    
+  
+    navigate('/contract', {replace: true});
+  }
 
+  
 
   return (
     <div>
@@ -115,7 +138,7 @@ function Home({ blockchain }) {
           <Typography variant='h5'>
             Load an existing Escrow Contract
           </Typography>
-          <form noValidate autoComplete='off' onSubmit={handleSubmit}>
+          <form noValidate autoComplete='off' onSubmit={handleSubmit} >
             <TextField 
               // onSubmit={handleSubmit}
               // onChange={(e) => setEscrow(e.target.value)}
@@ -126,13 +149,15 @@ function Home({ blockchain }) {
               variant="outlined" 
               // error={true}
               />
-            <Button 
-              // onClick={() => c}
-              // onClick={handleSubmit}
-              type='submit'
-              variant='contained'>
-              Load Escrow Contract
-            </Button>
+            {/* <Link className="nav-link" to="/contract"> */}
+              <Button 
+                // onClick={() => c}
+                // onClick={handleSubmit}
+                type='submit'
+                variant='contained'>
+                Load Escrow Contract
+              </Button>
+            {/* </Link> */}
           </form>
           <Typography variant='h6'>
             All escrows created on this platform:
@@ -159,4 +184,6 @@ function Home({ blockchain }) {
   );
 }
 
+// export {handleSubmit};
+export { array };
 export default Home;
