@@ -38,7 +38,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home blockchain={blockchain} />} />
-            <Route path="/contract" element={<Contract />} />
+            <Route path="/contract" element={<Contract blockchain={blockchain} />} />
             <Route path="/init" element={<Init />} />
             <Route path="/deposit" element={<Deposit />} />
           </Routes>

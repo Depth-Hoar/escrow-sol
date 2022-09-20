@@ -73,7 +73,8 @@ function Home({ blockchain }) {
     const loadEscrow = escrow;
     console.log(loadEscrow, 'loadEscrow');
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const newEscrow = new ethers.Contract(loadEscrow, EscrowArtifact, provider);
+    const signer = provider.getSigner();
+    const newEscrow = new ethers.Contract(loadEscrow, EscrowArtifact, signer);
     console.log(newEscrow, 'newEscrow');
     array.push(newEscrow);
     console.log(array, 'array1')

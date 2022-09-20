@@ -15,6 +15,8 @@ import React, { useEffect, useState } from "react";
 // import { Home } from './page-home';
 import { showError, getBlockchain } from "../utils/common";
 import { array } from './page-home';
+import { ethers } from "ethers";
+import EscrowArtifact from "../abis/Escrow.json";
 
 
 // const heights = [150, 150];
@@ -35,8 +37,6 @@ import { array } from './page-home';
 
 
 
-
-//================================= You need to figure out how to import form data ==========================================
 function Contract({ blockchain }) {
 
   const [newEscrow, setNewEscrow] = useState({
@@ -48,17 +48,37 @@ function Contract({ blockchain }) {
 
   const Escrow = array[0];
 
-
-  const initEscrow = async () => {
-    try {
-      // await Escrow.initEscrow(sellerAdd, buyerAdd, feePercent, blockNumber);
+  const initEscrow = async (e) => {
+    e.preventDefault();
+    if (window.ethereum) {
+      try {
+      console.log(Escrow);
+      const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+      console.log(accounts);
+      // const provider = new ethers.providers.Web3Provider(window.ethereum);
+      // const newEscrow = await new ethers.Contract('0xa16E02E87b7454126E5E10d957A927A7F5B5d2be', EscrowArtifact, provider);
+      // console.log(newEscrow)
+      // await window.ethereum.request({ method: "eth_requestAccounts" });
+      // const provider = new ethers.providers.Web3Provider(window.ethereum);
+      // const signer = provider.getSigner();
+      // await Escrow.connect(provider);
+      // const Escrow = new ethers.Contract('0xa16E02E87b7454126E5E10d957A927A7F5B5d2be', EscrowArtifact, signer);
+      await Escrow.initEscrow(newEscrow.seller, newEscrow.buyer, newEscrow.percentage, newEscrow.blockNumber);
+      //console.log(newEscrow.seller.toString(), newEscrow.buyer, newEscrow.percentage, newEscrow.blockNumber, 'stuff');
+      //await Escrow.initEscrow('0x70997970C51812dc3A010C7d01b50e0d17dc79C8', '0x90F79bf6EB2c4f870365E785982E1f101E93b906', '10', '100000000');
       // console.log(id,'id');
+      // resolve({ signerAddress, factory });
+      // const blockNum = await Escrow.getEscrowID();
+      // // console.log(ethers.BigNumber.add(blockNum),'num');
+      // console.log(blockNum,'num');
     } 
     catch (error) {
       showError(error);
     }
     // handleClose();
-  };
+  }};
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -132,8 +152,9 @@ function Contract({ blockchain }) {
             variant="outlined" 
             />
           <Button variant='contained' 
-            // onClick={initEscrow}
-            type='submit' >
+            onClick={initEscrow}
+            type='submit' 
+            >
           Init Escrow
           </Button>
           </form>
