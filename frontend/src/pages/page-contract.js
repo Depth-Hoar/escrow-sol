@@ -48,14 +48,18 @@ function Contract({ blockchain }) {
     // handleClose();
   }};
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    //console.log(newEscrow, 'newEscrow');
+  }
+
   const depositToEscrow = async (e) => {
     e.preventDefault();
     if (window.ethereum) {
       try {
-      console.log(Escrow);
-      const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-      console.log(accounts);
       await Escrow.depositToEscrow({ value: amount });
+      const balance = await Escrow.totalEscrowBalance();
+      console.log(balance.toString(),'escrow balance');
     } 
     catch (error) {
       showError(error);
@@ -63,12 +67,18 @@ function Contract({ blockchain }) {
     // handleClose();
   }};
 
-
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    //console.log(newEscrow, 'newEscrow');
-  }
+  const approve = async () => {
+    if (window.ethereum) {
+      try {
+      const approved = await Escrow.approveEscrow();
+      console.log(approved, 'approved');
+      const approvalState = await Escrow.checkEscrowStatus();
+      console.log(approvalState, 'approvalState');
+    } 
+    catch (error) {
+      showError(error);
+    }
+  }};
 
   const handleChange = async (e) => {
     // console.log(e.target.value,'target');
@@ -98,7 +108,6 @@ function Contract({ blockchain }) {
           <TextField 
             onChange={handleChange}
             name='seller'
-            // onChange={(e) => setNewEscrow(e.target.value)}
             id="outlined-basic" 
             label="Seller Address" 
             variant="outlined" 
@@ -106,7 +115,6 @@ function Contract({ blockchain }) {
           <TextField 
             onChange={handleChange}
             name='buyer'
-            // onChange={(e) => setNewEscrow(e.target.value)}
             id="outlined-basic" 
             label="Buyer Address" 
             variant="outlined" 
@@ -114,7 +122,6 @@ function Contract({ blockchain }) {
           <TextField 
             onChange={handleChange}
             name='percentage'
-            // onChange={(e) => setNewEscrow(e.target.value)}
             id="outlined-basic" 
             label="Fee Percentage" 
             variant="outlined" 
@@ -122,7 +129,6 @@ function Contract({ blockchain }) {
           <TextField 
             onChange={handleChange}
             name='blockNumber'
-            // onChange={(e) => setNewEscrow(e.target.value)}
             id="outlined-basic" 
             label="Block Number" 
             variant="outlined" 
@@ -151,7 +157,7 @@ function Contract({ blockchain }) {
 
 
           <Button variant='contained' onClick={depositToEscrow} >Buyer Deposit</Button>
-          <Button variant='contained' >Escrow Approval</Button>
+          <Button variant='contained' onClick={approve} >Escrow Approval</Button>
           <Button variant='contained' >Cancel Escrow</Button>
           </Box>
         </Grid>
