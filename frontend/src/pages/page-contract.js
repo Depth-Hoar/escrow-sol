@@ -19,23 +19,6 @@ import { ethers } from "ethers";
 import EscrowArtifact from "../abis/Escrow.json";
 
 
-// const heights = [150, 150];
-
-// const StyledAccordion = styled(Accordion)(({ theme }) => ({
-//   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-//   color: theme.palette.text.secondary,
-// }));
-
-// const data = await getBlockchain();
-
-// const theme = createTheme({
-//   palette: {
-//     primary: {
-//     },
-//   },
-// });
-
-
 
 function Contract({ blockchain }) {
 
@@ -45,6 +28,7 @@ function Contract({ blockchain }) {
     percentage: '',
     blockNumber: ''
   });
+  const [amount, setAmount] = useState(0);
 
   const Escrow = array[0];
 
@@ -52,25 +36,26 @@ function Contract({ blockchain }) {
     e.preventDefault();
     if (window.ethereum) {
       try {
+      // console.log(Escrow);
+      // const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+      // console.log(accounts);
+      const init = await Escrow.initEscrow(newEscrow.seller, newEscrow.buyer, newEscrow.percentage, newEscrow.blockNumber);
+      console.log(init,'init');
+    } 
+    catch (error) {
+      showError(error);
+    }
+    // handleClose();
+  }};
+
+  const depositToEscrow = async (e) => {
+    e.preventDefault();
+    if (window.ethereum) {
+      try {
       console.log(Escrow);
       const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
       console.log(accounts);
-      // const provider = new ethers.providers.Web3Provider(window.ethereum);
-      // const newEscrow = await new ethers.Contract('0xa16E02E87b7454126E5E10d957A927A7F5B5d2be', EscrowArtifact, provider);
-      // console.log(newEscrow)
-      // await window.ethereum.request({ method: "eth_requestAccounts" });
-      // const provider = new ethers.providers.Web3Provider(window.ethereum);
-      // const signer = provider.getSigner();
-      // await Escrow.connect(provider);
-      // const Escrow = new ethers.Contract('0xa16E02E87b7454126E5E10d957A927A7F5B5d2be', EscrowArtifact, signer);
-      await Escrow.initEscrow(newEscrow.seller, newEscrow.buyer, newEscrow.percentage, newEscrow.blockNumber);
-      //console.log(newEscrow.seller.toString(), newEscrow.buyer, newEscrow.percentage, newEscrow.blockNumber, 'stuff');
-      //await Escrow.initEscrow('0x70997970C51812dc3A010C7d01b50e0d17dc79C8', '0x90F79bf6EB2c4f870365E785982E1f101E93b906', '10', '100000000');
-      // console.log(id,'id');
-      // resolve({ signerAddress, factory });
-      // const blockNum = await Escrow.getEscrowID();
-      // // console.log(ethers.BigNumber.add(blockNum),'num');
-      // console.log(blockNum,'num');
+      await Escrow.depositToEscrow({ value: amount });
     } 
     catch (error) {
       showError(error);
@@ -82,13 +67,7 @@ function Contract({ blockchain }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const loadEscrow = escrow;
-    // console.log(loadEscrow, 'loadEscrow');
-    // const provider = new ethers.providers.Web3Provider(window.ethereum);
-    // const newEscrow = new ethers.Contract(loadEscrow, EscrowArtifact, provider);
-    // array.push(newEscrow);
-    // console.log(array, 'array1')
-    console.log(newEscrow, 'newEscrow');
+    //console.log(newEscrow, 'newEscrow');
   }
 
   const handleChange = async (e) => {
@@ -100,11 +79,7 @@ function Contract({ blockchain }) {
 
   }
 
-  console.log(newEscrow, 'newEscrow');
-
-
-
-  
+  // console.log(newEscrow, 'newEscrow');
   // console.log(Escrow,'Escrow')
 
 
@@ -118,6 +93,7 @@ function Contract({ blockchain }) {
           Escrow Contract Options
         </Typography>
         <Grid container sx={{ justifyContent: 'center' }}>
+        <Box sx={{ width: 300,'& button': { m: 2 } }} >
         <form noValidate autoComplete='off' onSubmit={handleSubmit} >
           <TextField 
             onChange={handleChange}
@@ -159,8 +135,22 @@ function Contract({ blockchain }) {
           </Button>
           </form>
 
-          <Box sx={{ width: 300,'& button': { m: 2 } }} >
-          <Button variant='contained' >Buyer Deposit</Button>
+          <Typography variant="h5" p={3} pb={1} >
+            Buyer Deposit
+          </Typography>
+
+          <TextField 
+            // onChange={handleChange}
+            name='deposit'
+            onChange={(e) => setAmount(e.target.value)}
+            // onChange={(e) => setNewEscrow(e.target.value)}
+            id="outlined-basic" 
+            label="Deposit Amount" 
+            variant="outlined" 
+            />
+
+
+          <Button variant='contained' onClick={depositToEscrow} >Buyer Deposit</Button>
           <Button variant='contained' >Escrow Approval</Button>
           <Button variant='contained' >Cancel Escrow</Button>
           </Box>
@@ -181,6 +171,6 @@ function Contract({ blockchain }) {
   );
 }
 
-// 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266, 0x90F79bf6EB2c4f870365E785982E1f101E93b906, 1, 100000000
+// 0x70997970C51812dc3A010C7d01b50e0d17dc79C8, 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC, 10, 100000000
 
 export default Contract;
