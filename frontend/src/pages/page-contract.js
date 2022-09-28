@@ -29,6 +29,14 @@ function Contract({ blockchain }) {
     blockNumber: ''
   });
   const [amount, setAmount] = useState(0);
+  const [show, setShow] = useState(false);
+
+  // const open = () => {
+  //   setShow(true);
+  // };
+  const handleClose = () => {
+    setShow(false);
+  };
 
   const Escrow = array[0];
 
@@ -45,7 +53,7 @@ function Contract({ blockchain }) {
     catch (error) {
       showError(error);
     }
-    // handleClose();
+    handleClose();
   }};
 
   const handleSubmit = async (e) => {
@@ -64,7 +72,7 @@ function Contract({ blockchain }) {
     catch (error) {
       showError(error);
     }
-    // handleClose();
+    handleClose();
   }};
 
   const approve = async () => {
@@ -78,6 +86,20 @@ function Contract({ blockchain }) {
     catch (error) {
       showError(error);
     }
+  }};
+
+  const cancelEscrow = async (e) => {
+    e.preventDefault();
+    if (window.ethereum) {
+      try {
+      await Escrow.cancelEscrow();
+      const balance = await Escrow.totalEscrowBalance();
+      console.log(balance.toString(),'escrow balance');
+    } 
+    catch (error) {
+      showError(error);
+    }
+    handleClose();
   }};
 
   const handleChange = async (e) => {
@@ -158,7 +180,7 @@ function Contract({ blockchain }) {
 
           <Button variant='contained' onClick={depositToEscrow} >Buyer Deposit</Button>
           <Button variant='contained' onClick={approve} >Escrow Approval</Button>
-          <Button variant='contained' >Cancel Escrow</Button>
+          <Button variant='contained' onClick={cancelEscrow} >Cancel Escrow</Button>
           </Box>
         </Grid>
 

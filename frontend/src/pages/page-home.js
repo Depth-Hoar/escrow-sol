@@ -41,9 +41,18 @@ function Home({ blockchain }) {
   const [escrows, setEscrows] = useState([]);
   // input
   const [escrow, setEscrow] = useState('');
-
+  
+  const [show, setShow] = useState(false);
+  
   const navigate = useNavigate();
 
+
+  // const open = () => {
+  //   setShow(true);
+  // };
+  const handleClose = () => {
+    setShow(false);
+  };
 
 
   const newEscrow = async () => {
@@ -53,7 +62,7 @@ function Home({ blockchain }) {
     catch (error) {
       showError(error);
     }
-    // handleClose();
+    handleClose();
   };
 
   useEffect(() => {
