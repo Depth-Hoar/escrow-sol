@@ -29,6 +29,22 @@ function Contract({ blockchain }) {
     blockNumber: ''
   });
   const [amount, setAmount] = useState(0);
+  // getters
+  const [blockNumber, setBlockNumber] = useState(0);
+  const [expiration, setExpiration] = useState('exp');
+  const [balance, setBalance] = useState(0);
+  const [sAmount, setSAmount] = useState(0);
+  
+  const [feeAmount, setFeeAmount] = useState(0);
+  const [sellerCancelled, setSellerCanceled] = useState(0);
+  const [buyerCancelled, setBuyerCancelled] = useState(0);
+  const [sellerApproved, setSellerApproved] = useState(0);
+  const [buyerApproved, BuyerApproved] = useState(0);
+  const [deposits, setDeposits] = useState(0);
+  const [contractAddress, setContractAddress] = useState(0);
+  const [escrowStatus, setEscrowStatus] = useState(0);
+  const [escrowID, setEscrowID] = useState(0);
+  //close
   const [show, setShow] = useState(false);
 
   // const open = () => {
@@ -102,14 +118,60 @@ function Contract({ blockchain }) {
     handleClose();
   }};
 
+  const endEscrow = async (e) => {
+    e.preventDefault();
+    if (window.ethereum) {
+      try {
+      await Escrow.endEscrow();
+    } 
+    catch (error) {
+      showError(error);
+    }
+    // handleClose();
+  }};
+
   const handleChange = async (e) => {
     // console.log(e.target.value,'target');
     const {name, value} = e.target
     setNewEscrow((prev) => {
       return{...prev, [name]: value }
     })
-
   }
+
+      // getter functions
+      useEffect(() => {
+        (async () => {
+          const bNumber = await Escrow.getBlockNumber();
+          setBlockNumber(bNumber.toNumber());
+          const exp = await Escrow.hasEscrowExpired();
+          setExpiration(exp.toString());
+          const tBalance = await Escrow.totalEscrowBalance();
+          setBalance(tBalance.toString());
+          const sellAmount = await Escrow.getSellerAmount();
+          setSAmount(sellAmount.toString());
+  
+          const feeAmount = await Escrow.getFeeAmount();
+          setFeeAmount(feeAmount.toString());
+          const sellerCancelled = await Escrow.hasSellerCancelled();
+          setSellerCanceled(sellerCancelled.toString());
+          const buyerCancelled = await Escrow.hasBuyerCancelled();
+          setBuyerCancelled(buyerCancelled.toString());
+          const sellerApproved = await Escrow.hasSellerApproved();
+          setSellerApproved(sellerApproved.toString());
+          const buyerApproved = await Escrow.hasBuyerApproved();
+          BuyerApproved(buyerApproved.toString());
+          const allDeposits = await Escrow.getAllDeposits();
+          setDeposits(allDeposits.toString());
+          const cAddress = await Escrow.getEscrowContractAddress();
+          setContractAddress(cAddress.toString());
+          const status = await Escrow.checkEscrowStatus();
+          setEscrowStatus(status.toString());
+          const escrowID = await Escrow.getEscrowID();
+          setEscrowID(escrowID.toString());
+        })();
+      }, [Escrow]);
+
+
 
   // console.log(newEscrow, 'newEscrow');
   // console.log(Escrow,'Escrow')
@@ -124,6 +186,51 @@ function Contract({ blockchain }) {
         <Typography variant="h3" p={3} pb={6} >
           Escrow Contract Options
         </Typography>
+        <Typography >
+            Block number: {blockNumber}  
+            Seller Amount: {sAmount}
+        </Typography>
+        <Typography >
+            Has Escrow Expired: {expiration}
+        </Typography>
+        <Typography >
+            Balance: {balance}
+        </Typography>
+        <Typography >
+            Seller Amount: {sAmount}
+        </Typography>
+
+
+
+        <Typography >
+            Fee Amount: {feeAmount}
+        </Typography>
+        <Typography >
+            Seller Cancelled: {sellerCancelled}
+        </Typography>
+        <Typography >
+            Buyer Cancelled: {buyerCancelled}
+        </Typography>
+        <Typography >
+            Seller Approved: {sellerApproved}
+        </Typography>
+        <Typography >
+            Buyer Approved: {buyerApproved}
+        </Typography>
+        <Typography >
+            Deposits: {deposits}
+        </Typography>
+
+        <Typography >
+            Contract Address: {contractAddress}
+        </Typography>
+        <Typography >
+            Status: {escrowStatus}
+        </Typography>
+        <Typography >
+            Escrow ID: {escrowID}
+        </Typography>
+
         <Grid container sx={{ justifyContent: 'center' }}>
         <Box sx={{ width: 300,'& button': { m: 2 } }} >
         <form noValidate autoComplete='off' onSubmit={handleSubmit} >
@@ -181,9 +288,10 @@ function Contract({ blockchain }) {
           <Button variant='contained' onClick={depositToEscrow} >Buyer Deposit</Button>
           <Button variant='contained' onClick={approve} >Escrow Approval</Button>
           <Button variant='contained' onClick={cancelEscrow} >Cancel Escrow</Button>
+          <Button variant='contained' onClick={endEscrow} >End Escrow</Button>
           </Box>
         </Grid>
-
+        <Typography variant=""></Typography>
         <Grid container sx={{ justifyContent: 'center' }}>
         <WalletCard  />
         {/* <p>

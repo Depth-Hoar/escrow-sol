@@ -197,7 +197,7 @@ contract Escrow {
         return feeAmount;
     }
 
-    function getSellermount() public view returns (uint256) {
+    function getSellerAmount() public view returns (uint256) {
         return sellerAmount;
     }
 
