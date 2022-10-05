@@ -34,7 +34,6 @@ function Contract({ blockchain }) {
   const [expiration, setExpiration] = useState('exp');
   const [balance, setBalance] = useState(0);
   const [sAmount, setSAmount] = useState(0);
-  
   const [feeAmount, setFeeAmount] = useState(0);
   const [sellerCancelled, setSellerCanceled] = useState(0);
   const [buyerCancelled, setBuyerCancelled] = useState(0);
@@ -149,7 +148,6 @@ function Contract({ blockchain }) {
           setBalance(tBalance.toString());
           const sellAmount = await Escrow.getSellerAmount();
           setSAmount(sellAmount.toString());
-  
           const feeAmount = await Escrow.getFeeAmount();
           setFeeAmount(feeAmount.toString());
           const sellerCancelled = await Escrow.hasSellerCancelled();
@@ -199,9 +197,6 @@ function Contract({ blockchain }) {
         <Typography >
             Seller Amount: {sAmount}
         </Typography>
-
-
-
         <Typography >
             Fee Amount: {feeAmount}
         </Typography>
@@ -220,7 +215,6 @@ function Contract({ blockchain }) {
         <Typography >
             Deposits: {deposits}
         </Typography>
-
         <Typography >
             Contract Address: {contractAddress}
         </Typography>
@@ -230,7 +224,6 @@ function Contract({ blockchain }) {
         <Typography >
             Escrow ID: {escrowID}
         </Typography>
-
         <Grid container sx={{ justifyContent: 'center' }}>
         <Box sx={{ width: 300,'& button': { m: 2 } }} >
         <form noValidate autoComplete='off' onSubmit={handleSubmit} >
@@ -283,8 +276,6 @@ function Contract({ blockchain }) {
             label="Deposit Amount" 
             variant="outlined" 
             />
-
-
           <Button variant='contained' onClick={depositToEscrow} >Buyer Deposit</Button>
           <Button variant='contained' onClick={approve} >Escrow Approval</Button>
           <Button variant='contained' onClick={cancelEscrow} >Cancel Escrow</Button>

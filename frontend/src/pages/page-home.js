@@ -64,17 +64,17 @@ function Home({ blockchain }) {
     }
     handleClose();
   };
-
+  
   useEffect(() => {
     (async () => {
-      console.log(blockchain.factory, 'factory');
-      blockchain.factory && setEscrows(await blockchain.factory.getAllContracts());
+      // console.log(blockchain.factory, 'factory');
+      // blockchain.factory && setEscrows(await blockchain.factory.getAllContracts());
+      // await blockchain.factory;
+      const allEscrows = await blockchain.factory.getAllContracts();
+      const reloadEscrows = [...allEscrows];
+      setEscrows(reloadEscrows.reverse());
     })();
   }, [blockchain]);
-
-  // console.log(blockchain,'blockchain');
-
-  
 
   
   const handleSubmit = async (e) => {
