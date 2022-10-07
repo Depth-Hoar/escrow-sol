@@ -1,33 +1,14 @@
-// import './App.css';
-// import { BrowserRouter } from 'react-router-dom';
-import { Button, Paper, Stack, Typography, TextField, Grid } from "@mui/material";
+import { Button, Paper, Typography, TextField, Grid } from "@mui/material";
 import { ExpandMore } from '@mui/icons-material';
 import ContractAddress from "../abis/contract-address.json";
-import EscrowArtifact from "../abis/Escrow.json";
+import EscrowArtifact from "../abis/escrow-abi/Escrow.json";
 import WalletCard from "../components/wallet.js";
-import EscrowList from "../components/escrowList"
-// import { red } from '@mui/material/colors';
-// import { styled } from '@mui/material/styles';
-// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Masonry from '@mui/lab/Masonry';
-// import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import Box from '@mui/material/Box';
-import { showError, getBlockchain } from "../utils/common";
+import { showError } from "../utils/common";
 import React, { useEffect, useState } from "react";
-
-import { ethers, Contract } from "ethers";
-
-import { Outlet, Link, Redirect, useNavigate } from 'react-router-dom';
-
-
-// const heights = [150, 150];
-
-// const StyledAccordion = styled(Accordion)(({ theme }) => ({
-//   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-//   color: theme.palette.text.secondary,
-// }));
-
-// const data = await getBlockchain();
+import { ethers } from "ethers";
+import { useNavigate } from 'react-router-dom';
 
 const contractAddress = ContractAddress.Factory;
 console.log(contractAddress,"contract");
@@ -46,10 +27,6 @@ function Home({ blockchain }) {
   
   const navigate = useNavigate();
 
-
-  // const open = () => {
-  //   setShow(true);
-  // };
   const handleClose = () => {
     setShow(false);
   };
@@ -67,9 +44,6 @@ function Home({ blockchain }) {
   
   useEffect(() => {
     (async () => {
-      // console.log(blockchain.factory, 'factory');
-      // blockchain.factory && setEscrows(await blockchain.factory.getAllContracts());
-      // await blockchain.factory;
       const allEscrows = await blockchain.factory.getAllContracts();
       const reloadEscrows = [...allEscrows];
       setEscrows(reloadEscrows.reverse());
@@ -87,21 +61,6 @@ function Home({ blockchain }) {
     console.log(newEscrow, 'newEscrow');
     array.push(newEscrow);
     console.log(array, 'array1')
-  
-
-    // const fs = require("fs");
-
-    // // const fs = require("fs");
-    // const contractsDir = __dirname + "/../frontend/src/abis";
-    // // if (!fs.existsSync(contractsDir)) {
-    // //   fs.mkdirSync(contractsDir);
-    // // }
-    // fs.writeFileSync(
-    //   contractsDir + "/escrow-address.json",
-    //   JSON.stringify({ Factory: newEscrow.address }, undefined, 2)
-    // );
-    
-  
     navigate('/contract', {replace: true});
   }
 
@@ -113,7 +72,7 @@ function Home({ blockchain }) {
       <header className="App-header">
       <Typography variant="h3" p={3}>
           Escrow Decentralized Application
-        </Typography>
+      </Typography>
         <Box sx={{ minHeight: 377 }} p={10}>
       <Masonry columns={2} spacing={5}>
         <Box sx={{ minHeight: 377 }}>
@@ -150,24 +109,16 @@ function Home({ blockchain }) {
           </Typography>
           <form noValidate autoComplete='off' onSubmit={handleSubmit} >
             <TextField 
-              // onSubmit={handleSubmit}
-              // onChange={(e) => setEscrow(e.target.value)}
-              // onChange={(e) => setEscrow(console.log(e.target.value, 'value'))}
               onChange={(e) => setEscrow(e.target.value)}
               id="outlined-basic" 
               label="Escrow Address" 
               variant="outlined" 
-              // error={true}
               />
-            {/* <Link className="nav-link" to="/contract"> */}
               <Button 
-                // onClick={() => c}
-                // onClick={handleSubmit}
                 type='submit'
                 variant='contained'>
                 Load Escrow Contract
               </Button>
-            {/* </Link> */}
           </form>
           <Typography variant='h6'>
             All escrows created on this platform:
@@ -175,10 +126,7 @@ function Home({ blockchain }) {
           {escrows.map((escrows) => (
          <Typography key={escrows}>
          {/* TODO add key for mapping */}
-            {/* {blockchain.factory.allEscrowContracts.toString()} */}
             {escrows}
-            {/* {console.log(escrow,'doyoooooooooooooo')} */}
-            {/* {console.log(escrow.escrowCount,'escrow count')} */}
           </Typography>
           ))}
 
@@ -194,6 +142,5 @@ function Home({ blockchain }) {
   );
 }
 
-// export {handleSubmit};
 export { array };
 export default Home;

@@ -1,5 +1,4 @@
 // import './App.css';
-import { BrowserRouter } from 'react-router-dom';
 import { Button, Paper, Stack, Typography, TextField, Grid, Box } from "@mui/material";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 // import { getBlockchain, showError } from "./utils/common";
@@ -15,8 +14,7 @@ import React, { useEffect, useState } from "react";
 // import { Home } from './page-home';
 import { showError, getBlockchain } from "../utils/common";
 import { array } from './page-home';
-import { ethers } from "ethers";
-import EscrowArtifact from "../abis/Escrow.json";
+
 
 
 
@@ -46,9 +44,6 @@ function Contract({ blockchain }) {
   //close
   const [show, setShow] = useState(false);
 
-  // const open = () => {
-  //   setShow(true);
-  // };
   const handleClose = () => {
     setShow(false);
   };
@@ -59,9 +54,6 @@ function Contract({ blockchain }) {
     e.preventDefault();
     if (window.ethereum) {
       try {
-      // console.log(Escrow);
-      // const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-      // console.log(accounts);
       const init = await Escrow.initEscrow(newEscrow.seller, newEscrow.buyer, newEscrow.percentage, newEscrow.blockNumber);
       console.log(init,'init');
     } 
@@ -126,7 +118,7 @@ function Contract({ blockchain }) {
     catch (error) {
       showError(error);
     }
-    // handleClose();
+    handleClose();
   }};
 
   const handleChange = async (e) => {
@@ -137,43 +129,37 @@ function Contract({ blockchain }) {
     })
   }
 
-      // getter functions
-      useEffect(() => {
-        (async () => {
-          const bNumber = await Escrow.getBlockNumber();
-          setBlockNumber(bNumber.toNumber());
-          const exp = await Escrow.hasEscrowExpired();
-          setExpiration(exp.toString());
-          const tBalance = await Escrow.totalEscrowBalance();
-          setBalance(tBalance.toString());
-          const sellAmount = await Escrow.getSellerAmount();
-          setSAmount(sellAmount.toString());
-          const feeAmount = await Escrow.getFeeAmount();
-          setFeeAmount(feeAmount.toString());
-          const sellerCancelled = await Escrow.hasSellerCancelled();
-          setSellerCanceled(sellerCancelled.toString());
-          const buyerCancelled = await Escrow.hasBuyerCancelled();
-          setBuyerCancelled(buyerCancelled.toString());
-          const sellerApproved = await Escrow.hasSellerApproved();
-          setSellerApproved(sellerApproved.toString());
-          const buyerApproved = await Escrow.hasBuyerApproved();
-          BuyerApproved(buyerApproved.toString());
-          const allDeposits = await Escrow.getAllDeposits();
-          setDeposits(allDeposits.toString());
-          const cAddress = await Escrow.getEscrowContractAddress();
-          setContractAddress(cAddress.toString());
-          const status = await Escrow.checkEscrowStatus();
-          setEscrowStatus(status.toString());
-          const escrowID = await Escrow.getEscrowID();
-          setEscrowID(escrowID.toString());
-        })();
-      }, [Escrow]);
-
-
-
-  // console.log(newEscrow, 'newEscrow');
-  // console.log(Escrow,'Escrow')
-
+  // getter functions
+  useEffect(() => {
+    (async () => {
+      const bNumber = await Escrow.getBlockNumber();
+      setBlockNumber(bNumber.toNumber());
+      const exp = await Escrow.hasEscrowExpired();
+      setExpiration(exp.toString());
+      const tBalance = await Escrow.totalEscrowBalance();
+      setBalance(tBalance.toString());
+      const sellAmount = await Escrow.getSellerAmount();
+      setSAmount(sellAmount.toString());
+      const feeAmount = await Escrow.getFeeAmount();
+      setFeeAmount(feeAmount.toString());
+      const sellerCancelled = await Escrow.hasSellerCancelled();
+      setSellerCanceled(sellerCancelled.toString());
+      const buyerCancelled = await Escrow.hasBuyerCancelled();
+      setBuyerCancelled(buyerCancelled.toString());
+      const sellerApproved = await Escrow.hasSellerApproved();
+      setSellerApproved(sellerApproved.toString());
+      const buyerApproved = await Escrow.hasBuyerApproved();
+      BuyerApproved(buyerApproved.toString());
+      const allDeposits = await Escrow.getAllDeposits();
+      setDeposits(allDeposits.toString());
+      const cAddress = await Escrow.getEscrowContractAddress();
+      setContractAddress(cAddress.toString());
+      const status = await Escrow.checkEscrowStatus();
+      setEscrowStatus(status.toString());
+      const escrowID = await Escrow.getEscrowID();
+      setEscrowID(escrowID.toString());
+    })();
+  }, [Escrow]);
 
 
   return (
@@ -181,49 +167,74 @@ function Contract({ blockchain }) {
     <div className="App">
       <header className="App-header">
       {/* <ThemeProvider theme={theme}> */}
-        <Typography variant="h3" p={3} pb={6} >
+        <Typography variant="h3" p={5} pb={6} >
           Escrow Contract Options
         </Typography>
-        <Typography >
-            Block number: {blockNumber}  
-            Seller Amount: {sAmount}
-        </Typography>
-        <Typography >
-            Has Escrow Expired: {expiration}
-        </Typography>
-        <Typography >
-            Balance: {balance}
-        </Typography>
-        <Typography >
-            Seller Amount: {sAmount}
-        </Typography>
-        <Typography >
-            Fee Amount: {feeAmount}
-        </Typography>
-        <Typography >
-            Seller Cancelled: {sellerCancelled}
-        </Typography>
-        <Typography >
-            Buyer Cancelled: {buyerCancelled}
-        </Typography>
-        <Typography >
-            Seller Approved: {sellerApproved}
-        </Typography>
-        <Typography >
-            Buyer Approved: {buyerApproved}
-        </Typography>
-        <Typography >
-            Deposits: {deposits}
-        </Typography>
-        <Typography >
-            Contract Address: {contractAddress}
-        </Typography>
-        <Typography >
-            Status: {escrowStatus}
-        </Typography>
-        <Typography >
-            Escrow ID: {escrowID}
-        </Typography>
+        <Box sx={{ padding: 5 }}>
+          <Typography >
+                Contract Address: {contractAddress}
+            </Typography>
+          <Typography >
+                Escrow ID: {escrowID}
+          </Typography>
+        </Box>
+        <Grid container sx={{ justifyContent: 'center' }}>
+        <Grid item sx={12} md={6} lg={5}>
+          <Typography className='data'>
+              Block number: {blockNumber}  
+          </Typography>
+        </Grid>
+        <Grid item sx={12} md={6} lg={5}>
+          <Typography >
+              Has Escrow Expired: {expiration}
+          </Typography>
+        </Grid>
+        <Grid item sx={12} md={6} lg={5}>
+          <Typography >
+              Balance: {balance}
+          </Typography>
+        </Grid>
+        <Grid item sx={12} md={6} lg={5}>
+          <Typography >
+              Fee Amount: {feeAmount}
+          </Typography>
+        </Grid>
+        <Grid item sx={12} md={6} lg={5}>
+          <Typography >
+              Seller Cancelled: {sellerCancelled}
+          </Typography>
+        </Grid>
+        <Grid item sx={12} md={6} lg={5}>
+          <Typography >
+              Buyer Cancelled: {buyerCancelled}
+          </Typography>
+        </Grid>
+        <Grid item sx={12} md={6} lg={5}>
+          <Typography >
+              Seller Approved: {sellerApproved}
+          </Typography>
+        </Grid>
+        <Grid item sx={12} md={6} lg={5}>
+          <Typography >
+              Seller Amount: {sAmount}
+          </Typography>
+        </Grid>
+        <Grid item sx={12} md={6} lg={5}>
+          <Typography >
+              Buyer Approved: {buyerApproved}
+          </Typography>
+        </Grid>
+        <Grid item sx={12} md={6} lg={5}>
+          <Typography >
+              Deposits: {deposits}
+          </Typography>
+        </Grid>
+        <Grid item sx={12} md={6} lg={5}>
+          <Typography >
+              Status: {escrowStatus}
+          </Typography>
+        </Grid>
+        </Grid>
         <Grid container sx={{ justifyContent: 'center' }}>
         <Box sx={{ width: 300,'& button': { m: 2 } }} >
         <form noValidate autoComplete='off' onSubmit={handleSubmit} >
@@ -263,7 +274,7 @@ function Contract({ blockchain }) {
           </Button>
           </form>
 
-          <Typography variant="h5" p={3} pb={1} >
+          <Typography variant="h5" p={5} pb={1} >
             Buyer Deposit
           </Typography>
 
@@ -281,17 +292,10 @@ function Contract({ blockchain }) {
           <Button variant='contained' onClick={cancelEscrow} >Cancel Escrow</Button>
           <Button variant='contained' onClick={endEscrow} >End Escrow</Button>
           </Box>
-        </Grid>
-        <Typography variant=""></Typography>
+          </Grid>
         <Grid container sx={{ justifyContent: 'center' }}>
-        <WalletCard  />
-        {/* <p>
-          {(contractAddress).toString()}
-        </p> */}
-        </Grid>
-      {/* </ThemeProvider> */}
-
-
+          <WalletCard  />
+        </Grid> 
       </header>
     </div>
     </div>
