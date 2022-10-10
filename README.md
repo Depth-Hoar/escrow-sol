@@ -17,7 +17,10 @@ npm install, npx hardhat node
 ```
 
 3. Open a new terminal and deploy the smart contract in the `localhost` network
-   `npx hardhat run --network localhost scripts/deploy.js`
+
+```shell
+npx hardhat run --network localhost scripts/deploy.js
+```
 
 run tests
 
