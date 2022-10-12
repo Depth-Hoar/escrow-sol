@@ -155,12 +155,23 @@ function Contract({ blockchain }) {
       const cAddress = await Escrow.getEscrowContractAddress();
       setContractAddress(cAddress.toString());
       const status = await Escrow.checkEscrowStatus();
-      setEscrowStatus(status.toString());
+      if (status === 0){
+        setEscrowStatus('Uninitialized');
+      } if (status === 1){
+        setEscrowStatus('Initialized');
+      } if (status === 2){
+        setEscrowStatus('Buyer Deposited');
+      } if (status === 3){
+        setEscrowStatus('Service Approved');
+      } if (status === 4){
+        setEscrowStatus('Escrow Complete');
+      } if (status === 5){
+        setEscrowStatus('Escrow Cancelled');
+      };
       const escrowID = await Escrow.getEscrowID();
       setEscrowID(escrowID.toString());
     })();
   }, [Escrow]);
-
 
   return (
     <div>
@@ -181,7 +192,7 @@ function Contract({ blockchain }) {
         <Grid container sx={{ justifyContent: 'center' }}>
         <Grid item sx={12} md={6} lg={5}>
           <Typography className='data'>
-              Block number: {blockNumber}  
+              Current block number: {blockNumber}  
           </Typography>
         </Grid>
         <Grid item sx={12} md={6} lg={5}>
