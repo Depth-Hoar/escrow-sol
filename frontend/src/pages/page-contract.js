@@ -157,17 +157,17 @@ function Contract({ blockchain }) {
       const status = await Escrow.checkEscrowStatus();
       if (status === 0){
         setEscrowStatus('Uninitialized');
-      } if (status === 1){
+      } else if (status === 1){
         setEscrowStatus('Initialized');
-      } if (status === 2){
+      } else if (status === 2){
         setEscrowStatus('Buyer Deposited');
-      } if (status === 3){
+      } else if (status === 3){
         setEscrowStatus('Service Approved');
-      } if (status === 4){
+      } else if (status === 4){
         setEscrowStatus('Escrow Complete');
-      } if (status === 5){
+      } else if (status === 5){
         setEscrowStatus('Escrow Cancelled');
-      };
+      } else setEscrowStatus('error');
       const escrowID = await Escrow.getEscrowID();
       setEscrowID(escrowID.toString());
     })();
