@@ -49,6 +49,7 @@ function Contract({ blockchain }) {
   };
 
   const Escrow = array[0];
+  console.log(Escrow);
 
   const initEscrow = async (e) => {
     e.preventDefault();

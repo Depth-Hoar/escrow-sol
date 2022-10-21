@@ -5,15 +5,13 @@ pragma solidity 0.8.15;
 contract Factory {
     address[] public allEscrowContracts;
     uint256 public escrowCount;
-    address public factoryOwner;
 
     constructor() {
-        factoryOwner = msg.sender;
         escrowCount = 0;
     }
 
     function createContract() public {
-        address newContract = address(new Escrow(factoryOwner, escrowCount++));
+        address newContract = address(new Escrow(msg.sender, escrowCount++));
         allEscrowContracts.push(newContract);
     }
 

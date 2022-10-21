@@ -1,4 +1,4 @@
-[
+const escrowJson = [
 	{
 		"inputs": [
 			{
@@ -488,3 +488,6 @@
 		"type": "receive"
 	}
 ]
+
+module.exports = { escrowJson };
+// export {escrowJson};
