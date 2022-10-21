@@ -134,6 +134,7 @@ function Contract({ blockchain }) {
     (async () => {
       const bNumber = await Escrow.getBlockNumber();
       setBlockNumber(bNumber.toNumber());
+      console.log(bNumber,'bnumber');
       const exp = await Escrow.hasEscrowExpired();
       setExpiration(exp.toString());
       const tBalance = await Escrow.totalEscrowBalance();
@@ -153,6 +154,7 @@ function Contract({ blockchain }) {
       const allDeposits = await Escrow.getAllDeposits();
       setDeposits(allDeposits.toString());
       const cAddress = await Escrow.getEscrowContractAddress();
+      console.log(cAddress,'address');
       setContractAddress(cAddress.toString());
       const status = await Escrow.checkEscrowStatus();
       if (status === 0){

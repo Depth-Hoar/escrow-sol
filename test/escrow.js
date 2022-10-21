@@ -1,15 +1,20 @@
 const { expect } = require('chai');
 const { ethers } = require('hardhat');
+const hre = require("hardhat");
+const { escrowJson } = require('./escrowJson');
 
 describe('Factory', function () {
 
   it('should initiate the factory contract and create a single new Escrow contract', async function () {
-		const Factory = await ethers.getContractFactory('Factory');
-    factory = await Factory.deploy();
+		[factoryOwner, escrowOwner] = await ethers.getSigners();
+    const Factory = await ethers.getContractFactory('Factory');
+    factory = await Factory.connect(factoryOwner).deploy();
     await factory.deployed();
-    await factory.createContract();
+    await factory.connect(escrowOwner).createContract();
     const allEscrowContracts = await factory.getAllContracts();
     expect(allEscrowContracts.length).to.equal(1);
+
+    // await escrow.connect(buyer).depositToEscrow({value: ethers.utils.parseEther('10')});
 	});
 
 });
@@ -18,11 +23,15 @@ describe('Factory', function () {
 describe('Escrow', function () {
 
   beforeEach(async () => {
-    [escrowOwner, seller, buyer, externalWallet] = await ethers.getSigners();
-    const EscrowContract = await ethers.getContractFactory('Escrow');
-    escrow = await EscrowContract.deploy(escrowOwner.address, 0);
+    [factoryOwner, escrowOwner, seller, buyer, externalWallet] = await ethers.getSigners();
+    const Factory = await ethers.getContractFactory('Factory');
+    factory = await Factory.connect(factoryOwner).deploy();
+    await factory.deployed();
+    escrowContractInstants = await factory.connect(escrowOwner).createContract();
+    const allEscrowContracts = await factory.getAllContracts();
+    escrow = new ethers.Contract(allEscrowContracts[0], escrowJson, escrowOwner);
     await escrow.deployed();
-    await escrow.initEscrow(seller.address, buyer.address, 10, 100000000);
+    await escrow.connect(escrowOwner).initEscrow(seller.address, buyer.address, 10, 100000000);
   });
 
   it('should initialize a new escrow and return escrowID as 1', async function() {
