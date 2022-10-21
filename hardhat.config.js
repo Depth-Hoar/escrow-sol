@@ -16,14 +16,14 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 module.exports = {
   solidity: "0.8.15",
   defaultNetwork: "hardhat",
-  // networks: {
-  //   hardhat: {
-  //     blockGasLimit: 10000 // whatever you want here
-  //   },
-  //   goerli: {
-  //     url: `https://eth-goerli.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`,
-  //     accounts: [`0x${privateKey}`],
-  //     blockGasLimit: 10000 // whatever you want here
-  //   },
-  // }
+  networks: {
+    hardhat: {
+      blockGasLimit: 10000 // whatever you want here
+    },
+    goerli: {
+      url: `https://eth-goerli.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`,
+      accounts: [`0x${privateKey}`],
+      // blockGasLimit: 10000 // whatever you want here
+    },
+  }
 }

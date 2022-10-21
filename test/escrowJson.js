@@ -314,7 +314,7 @@ const escrowJson = [
 	},
 	{
 		"inputs": [],
-		"name": "getSellermount",
+		"name": "getSellerAmount",
 		"outputs": [
 			{
 				"internalType": "uint256",
