@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useHistory  } from 'react-router-dom';
 import ContractAddress from "./abis/contract-address.json";
 import { useEffect, useState } from 'react';
 import { getBlockchain } from './utils/common'
@@ -24,6 +24,7 @@ import Deposit from './pages/page-deposit';
 function App() {
 
   const [blockchain, setBlockchain] = useState({});
+  // const history = useHistory();
 
   useEffect(() => {
     (async () => {
@@ -35,14 +36,14 @@ function App() {
     <div>
         <NavBar blockchain={blockchain} />
       {/* <Header blockchain={blockchain} /> */}
-        <Router>
+        {/* <Router> */}
           <Routes>
             <Route path="/" element={<Home blockchain={blockchain} />} />
             <Route path="/contract" element={<Contract />} />
             <Route path="/init" element={<Init />} />
             <Route path="/deposit" element={<Deposit />} />
           </Routes>
-        </Router>
+        {/* </Router> */}
     </div>
   );
 }
