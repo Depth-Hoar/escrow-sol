@@ -1,8 +1,8 @@
-import { ThemeProvider, AppBar, Toolbar, IconButton, Typography, Box } from '@mui/material'
+import { ThemeProvider, AppBar, Toolbar, Button, Typography, Box } from '@mui/material'
 import { Menu } from '@mui/icons-material';
 // import { getBlockchain, showError } from "./utils/common.js";
 import { showError } from "../utils/common";
-
+import { useNavigate } from 'react-router-dom';
 import { ethers } from "ethers";
 import React, { useEffect, useState } from "react";
 
@@ -52,6 +52,8 @@ const NavBar = ({ blockchain }) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [account, setAccount] = useState(null);
   const [balance, setBalance] = useState(null);
+
+  const navigate = useNavigate();
   
 // const testt, setAccount] = useState(null);
 //   const test = window.ethereum.request({        
@@ -108,11 +110,16 @@ const NavBar = ({ blockchain }) => {
     setAccount(null);
   };
 
+  const home = () => {
+    navigate('/', {replace: true});
+    window.location.reload();
+  }
+
   return (
 <Box sx={{ flexGrow: 1 }}>
     <AppBar position="static">
       <Toolbar>
-      <IconButton
+      {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -120,14 +127,25 @@ const NavBar = ({ blockchain }) => {
             sx={{ mr: 2 }}
           >
             <Menu />
-          </IconButton>
-        <Typography             variant="h6"
+          </IconButton> */}
+          {/* <div onClick={home}> */}
+        <Typography variant="h6"
             noWrap
             component="div"
+            onClick={home}
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
           Escrow DAPP
         </Typography>
-        <Typography variant="h6" component="div">
+        {/* </div> */}
+        <Button 
+          variant='contained'
+          onClick={connectHandler}>
+          Connect Account
+        </Button>
+        <Typography 
+          sx={{ pl:2}}
+          variant="h6" 
+          component="div">
          Account: {account} 
         </Typography>
       </Toolbar>

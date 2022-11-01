@@ -21,7 +21,11 @@ module.exports = {
     goerli: {
       url: `https://eth-goerli.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`,
       accounts: [`0x${privateKey}`],
-      // blockGasLimit: 10000 // whatever you want here
+    },
+    beresheet: {
+      url: `https://beresheet-evm.jelliedowl.net`,
+      chainId: 2022,
+      accounts: [berePrivateKey],
     },
     beresheet: {
       url: `https://beresheet-evm.jelliedowl.net`,

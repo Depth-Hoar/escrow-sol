@@ -49,14 +49,14 @@ function Contract({ blockchain }) {
   };
 
   const Escrow = array[0];
-  console.log(Escrow);
+  // console.log(Escrow);
 
   const initEscrow = async (e) => {
     e.preventDefault();
     if (window.ethereum) {
       try {
       const init = await Escrow.initEscrow(newEscrow.seller, newEscrow.buyer, newEscrow.percentage, newEscrow.blockNumber);
-      console.log(init,'init');
+      // console.log(init,'init');
     } 
     catch (error) {
       showError(error);
@@ -75,7 +75,7 @@ function Contract({ blockchain }) {
       try {
       await Escrow.depositToEscrow({ value: amount });
       const balance = await Escrow.totalEscrowBalance();
-      console.log(balance.toString(),'escrow balance');
+      // console.log(balance.toString(),'escrow balance');
     } 
     catch (error) {
       showError(error);
@@ -87,9 +87,9 @@ function Contract({ blockchain }) {
     if (window.ethereum) {
       try {
       const approved = await Escrow.approveEscrow();
-      console.log(approved, 'approved');
+      // console.log(approved, 'approved');
       const approvalState = await Escrow.checkEscrowStatus();
-      console.log(approvalState, 'approvalState');
+      // console.log(approvalState, 'approvalState');
     } 
     catch (error) {
       showError(error);
@@ -102,7 +102,7 @@ function Contract({ blockchain }) {
       try {
       await Escrow.cancelEscrow();
       const balance = await Escrow.totalEscrowBalance();
-      console.log(balance.toString(),'escrow balance');
+      // console.log(balance.toString(),'escrow balance');
     } 
     catch (error) {
       showError(error);
@@ -248,66 +248,67 @@ function Contract({ blockchain }) {
         </Grid>
         </Grid>
         <Grid container sx={{ justifyContent: 'center' }}>
-        <Box sx={{ width: 300,'& button': { m: 2 } }} >
-        <form noValidate autoComplete='off' onSubmit={handleSubmit} >
-          <TextField 
-            onChange={handleChange}
-            name='seller'
-            id="outlined-basic" 
-            label="Seller Address" 
-            variant="outlined" 
-            />
-          <TextField 
-            onChange={handleChange}
-            name='buyer'
-            id="outlined-basic" 
-            label="Buyer Address" 
-            variant="outlined" 
-            />
-          <TextField 
-            onChange={handleChange}
-            name='percentage'
-            id="outlined-basic" 
-            label="Fee Percentage" 
-            variant="outlined" 
-            />
-          <TextField 
-            onChange={handleChange}
-            name='blockNumber'
-            id="outlined-basic" 
-            label="Block Number" 
-            variant="outlined" 
-            />
-          <Button variant='contained' 
-            onClick={initEscrow}
-            type='submit' 
-            >
-          Init Escrow
-          </Button>
-          </form>
+          <Box sx={{ width: 300,'& button': { m: 2 } }} >
+            <form noValidate autoComplete='off' onSubmit={handleSubmit} >
+              <TextField 
+                onChange={handleChange}
+                name='seller'
+                id="outlined-basic" 
+                label="Seller Address" 
+                variant="outlined" 
+                />
+              <TextField 
+                onChange={handleChange}
+                name='buyer'
+                id="outlined-basic" 
+                label="Buyer Address" 
+                variant="outlined" 
+                />
+              <TextField 
+                onChange={handleChange}
+                name='percentage'
+                id="outlined-basic" 
+                label="Fee Percentage" 
+                variant="outlined" 
+                />
+              <TextField 
+                onChange={handleChange}
+                name='blockNumber'
+                id="outlined-basic" 
+                label="Block Number" 
+                variant="outlined" 
+                />
+              <Button variant='contained' 
+                onClick={initEscrow}
+                type='submit' 
+                >
+              Init Escrow
+              </Button>
+            </form>
 
-          <Typography variant="h5" p={5} pb={1} >
-            Buyer Deposit
-          </Typography>
+              <Typography variant="h5" p={5} pb={1} >
+                Buyer Deposit
+              </Typography>
 
-          <TextField 
-            // onChange={handleChange}
-            name='deposit'
-            onChange={(e) => setAmount(e.target.value)}
-            // onChange={(e) => setNewEscrow(e.target.value)}
-            id="outlined-basic" 
-            label="Deposit Amount" 
-            variant="outlined" 
-            />
-          <Button variant='contained' onClick={depositToEscrow} >Buyer Deposit</Button>
-          <Button variant='contained' onClick={approve} >Escrow Approval</Button>
-          <Button variant='contained' onClick={cancelEscrow} >Cancel Escrow</Button>
-          <Button variant='contained' onClick={endEscrow} >End Escrow</Button>
-          </Box>
+              <TextField 
+                // onChange={handleChange}
+                name='deposit'
+                onChange={(e) => setAmount(e.target.value)}
+                // onChange={(e) => setNewEscrow(e.target.value)}
+                id="outlined-basic" 
+                label="Deposit Amount" 
+                variant="outlined" 
+                />
+              <Button variant='contained' onClick={depositToEscrow} >Buyer Deposit</Button>
+              <Button variant='contained' onClick={approve} >Escrow Approval</Button>
+              <Button variant='contained' onClick={cancelEscrow} >Cancel Escrow</Button>
+              <Button variant='contained' onClick={endEscrow} >End Escrow</Button>
+              <Box sx={{ p:10 }}/>
+            </Box>
           </Grid>
-        <Grid container sx={{ justifyContent: 'center' }}>
+        {/* <Grid container sx={{ justifyContent: 'center' }}>
           <WalletCard  />
-        </Grid> 
+        </Grid>  */}
       </header>
     </div>
     </div>
