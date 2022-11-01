@@ -41,15 +41,19 @@ function Home({ blockchain }) {
     }
     handleClose();
   };
+
+  function addNumber(item, index, array) {
+    array[index] = `${index}: ${item}`;
+  }
   
   useEffect(() => {
     (async () => {
       const allEscrows = await blockchain.factory.getAllContracts();
       const reloadEscrows = [...allEscrows];
+      reloadEscrows.forEach(addNumber);
       setEscrows(reloadEscrows.reverse());
     })();
   }, [blockchain]);
-
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -63,8 +67,6 @@ function Home({ blockchain }) {
     console.log(array, 'array1')
     navigate('/contract', {replace: true});
   }
-
-  
 
   return (
     <div>
