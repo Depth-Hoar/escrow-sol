@@ -1,30 +1,31 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, useHistory  } from 'react-router-dom';
-import ContractAddress from "./abis/contract-address.json";
+import { Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getBlockchain } from './utils/common'
 import NavBar from "./components/navbar.js";
-// import Header from './components/Header';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { green, red } from '@mui/material/colors';
 
 import Home from './pages/page-home';
 import Contract from './pages/page-contract';
 import Init from './pages/page-init';
 import Deposit from './pages/page-deposit';
 
-// const heights = [150, 150];
-
-// const StyledAccordion = styled(Accordion)(({ theme }) => ({
-//   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-//   color: theme.palette.text.secondary,
-// }));
-
-// const data = await getBlockchain();
-
+const theme = createTheme({
+  palette: {
+    primary: {
+      // main: '#e53939',
+      main: red[500],
+    },
+    secondary: { main: green[500],
+    },
+  },
+});
 
 function App() {
 
   const [blockchain, setBlockchain] = useState({});
-  // const history = useHistory();
+
 
   useEffect(() => {
     (async () => {
@@ -34,16 +35,15 @@ function App() {
 
   return (
     <div>
+      <ThemeProvider theme={theme}>
         <NavBar blockchain={blockchain} />
-      {/* <Header blockchain={blockchain} /> */}
-        {/* <Router> */}
-          <Routes>
-            <Route path="/" element={<Home blockchain={blockchain} />} />
-            <Route path="/contract" element={<Contract />} />
-            <Route path="/init" element={<Init />} />
-            <Route path="/deposit" element={<Deposit />} />
-          </Routes>
-        {/* </Router> */}
+        <Routes>
+          <Route path="/" element={<Home blockchain={blockchain} />} />
+          <Route path="/contract" element={<Contract />} />
+          <Route path="/init" element={<Init />} />
+          <Route path="/deposit" element={<Deposit />} />
+        </Routes>
+      </ThemeProvider>
     </div>
   );
 }
