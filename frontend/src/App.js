@@ -17,9 +17,17 @@ const theme = createTheme({
       // main: '#e53939',
       main: red[500],
     },
-    secondary: { main: green[500],
+    secondary: {
+       main: green[500],
     },
   },
+  typography: {
+    fontFamily: '',
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+    fontWeightBold: 600,
+  }
 });
 
 function App() {

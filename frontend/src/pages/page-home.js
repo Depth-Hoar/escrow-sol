@@ -82,26 +82,36 @@ function Home({ blockchain }) {
                   Create a new Escrow Contract
                 </Typography>
                 <Paper  elevation={3} sx={{ p:4, pl:10, pr:10 }}>
-                  The address which creates the new Escrow contract is the owner of the contract. This address is responsible for correctly initializing the buyer and seller addresses as well as resolve disputes.
+                  <Typography>
+                    The address which creates the new Escrow contract is the owner of the contract. This address is responsible for correctly initializing the buyer and seller addresses as well as resolve disputes.
+                  </Typography>
                 </Paper>
                 <ExpandMore />
                 <Paper  elevation={3} sx={{ p:4, pl:10, pr:10 }}>
-                  The buyer can independently deposit ethers into the escrow any number of times.
+                  <Typography>
+                    The buyer can independently deposit ethers into the escrow any number of times.
+                  </Typography>
                 </Paper>
                 <ExpandMore sx={{paddingRight:20, align: 'left'}} />
                 <ExpandMore sx={{paddingLeft:20, align: 'right'}} />
                 <Masonry columns={2} >
                   <Paper  elevation={3} sx={{ padding:2, align: 'left'}}>
-                    Both the buyer and the seller need to press the Approve button to get the deal approved. Once both have approved, the escrow will pay out the decided percentage of the contract deposits to the fee and the remaining to the seller automatically.
+                    <Typography>
+                      Both the buyer and the seller need to press the Approve button to get the deal approved. Once both have approved, the escrow will pay out the decided percentage of the contract deposits to the fee and the remaining to the seller automatically.
+                    </Typography>
                   </Paper>
                   <Paper  elevation={3} sx={{ padding:2, align: 'right'}}>
-                    In case both the buyer and seller decide not to go ahead with the escrow, both need to press the Cancel button to cancel the escrow. No fee will be charged by the owner in this case and the entire buyer deposit will be transferred back to the buyer.
+                    <Typography>
+                      In case both the buyer and seller decide not to go ahead with the escrow, both need to press the Cancel button to cancel the escrow. No fee will be charged by the owner in this case and the entire buyer deposit will be transferred back to the buyer.
+                    </Typography>
                   </Paper>
                 </Masonry>
                 <ExpandMore sx={{paddingRight:20, align: 'left'}} />
                 <ExpandMore sx={{paddingLeft:20, align: 'right'}} />
                 <Paper elevation={3} sx={{p:4, align: 'left', display: 'flex'}}>
-                Neither the creators of the escrow platform nor the owner will have any authority to launder with the money deposited into the smart contract. But they are no way accountable for any monetary losses incurred.
+                  <Typography>
+                    Neither the creators of the escrow platform nor the owner will have any authority to launder with the money deposited into the smart contract. But they are no way accountable for any monetary losses incurred.
+                  </Typography>
                 </Paper>
                 <ExpandMore/>
                 <Box>
@@ -124,7 +134,8 @@ function Home({ blockchain }) {
                   sx={{ m: 1, width: '42ch' }}
                   id="outlined-basic" 
                   label="Escrow Address" 
-                  variant="outlined" 
+                  variant="outlined"
+                  required
                   />
                   <Box sx={{p:1, pb:2}}>
                     <Button 
