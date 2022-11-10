@@ -1,3 +1,4 @@
+import './navbar.css';
 import { ThemeProvider, AppBar, Toolbar, Button, Typography, Box } from '@mui/material'
 import { Menu } from '@mui/icons-material';
 // import { getBlockchain, showError } from "./utils/common.js";
@@ -5,65 +6,17 @@ import { showError } from "../utils/common";
 import { useNavigate } from 'react-router-dom';
 import { ethers } from "ethers";
 import React, { useEffect, useState } from "react";
+import Blockies from 'react-blockies';
 
 
 
 const NavBar = ({ blockchain }) => {
-  // const [show, setShow] = useState(false);
-
-  // const add = () => {
-  //   setShow(true);
-  // };
-  // const handleClose = () => {
-  //   setShow(false);
-  // };
-
-  // // const handleSubmit = async (e) => {
-  // const escrow = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await blockchain.factory.createContract();
-  //   } catch (error) {
-  //     showError(error);
-  //   }
-  //   handleClose();
-  // };
-
-
-
-
-
-
-  // const getShares = async () => {
-  //   const { DAOContract, signerAddress } = await getBlockchain();
-  //   try {
-  //     signerAddress &&
-  //       setShares((await DAOContract.shares(signerAddress)).toString());
-  //     setContributionEnd((await DAOContract.contributionEnd()).toNumber());
-  //     setAvailableFunds((await DAOContract.availableFunds()).toString());
-  //     signerAddress && setIsAdmin((await DAOContract.admin()) == signerAddress);
-  //   } catch (error) {
-  //     showError(error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   getShares();
-  // }, []);
   const [errorMessage, setErrorMessage] = useState(null);
   const [account, setAccount] = useState(null);
   const [balance, setBalance] = useState(null);
 
   const navigate = useNavigate();
   
-// const testt, setAccount] = useState(null);
-//   const test = window.ethereum.request({        
-//     method: "eth_getBalance",        
-//     params: [newAccount.toString(), "latest"],      
-// });
-
-
-
-
   useEffect(() => {
     if (window.ethereum) {
       window.ethereum.on("chainChanged", chainChanged);
@@ -137,16 +90,36 @@ const NavBar = ({ blockchain }) => {
           Escrow DAPP
         </Typography>
         {/* </div> */}
-        <Button 
+        <Button className='uuuugh'
           variant='contained'
           onClick={connectHandler}>
           Connect Account
         </Button>
+        <Typography       
+          sx={{ pl:2}}
+          variant="h6" 
+          component="div">
+          {balance ? 
+            <Typography>Balance: {Number(balance).toFixed(4)} </Typography> 
+            : <p href=" ">{''}</p>
+          }
+        </Typography>
         <Typography 
           sx={{ pl:2}}
           variant="h6" 
           component="div">
-         Account: {account} 
+          {/* Ternary operator if else in line. if account show account if no account leave empty string */}
+          {account ? 
+            <Typography sx={{ pl:2,  }}>
+              Account: {account.slice(0,5) + '...' + account.slice(38,42)} 
+              <Blockies
+                account={account}
+                size={6}
+                scale={3}
+                className='identicon' />
+            </Typography> 
+            : <p href=" ">{''}</p>
+          }
         </Typography>
       </Toolbar>
     </AppBar>

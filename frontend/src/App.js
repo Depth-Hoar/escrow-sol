@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { getBlockchain } from './utils/common'
 import NavBar from "./components/navbar.js";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { green, red } from '@mui/material/colors';
+import { green, red, deep } from '@mui/material/colors';
 
 import Home from './pages/page-home';
 import Contract from './pages/page-contract';
@@ -13,6 +13,7 @@ import Deposit from './pages/page-deposit';
 
 const theme = createTheme({
   palette: {
+    mode: 'dark',
     primary: {
       // main: '#e53939',
       main: red[500],
@@ -22,6 +23,10 @@ const theme = createTheme({
     },
   },
   typography: {
+    primary: {
+      // main: '#e53939',
+      main: red[500],
+    },
     fontFamily: '',
     fontWeightLight: 300,
     fontWeightRegular: 400,

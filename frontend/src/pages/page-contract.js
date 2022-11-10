@@ -179,70 +179,70 @@ function Contract({ blockchain }) {
     <div className="App">
       <header className="App-header">
       {/* <ThemeProvider theme={theme}> */}
-        <Typography variant="h3" p={5} pb={6} >
+        <Typography variant="h3" p={5} pb={6} color="common.white" >
           Escrow Contract Options
         </Typography>
         <Box sx={{ padding: 5 }}>
-          <Typography >
+          <Typography color="common.white">
                 Contract Address: {contractAddress}
             </Typography>
-          <Typography >
+          <Typography color="common.white">
                 Escrow ID: {escrowID}
           </Typography>
         </Box>
         <Grid container sx={{ justifyContent: 'center' }}>
         <Grid item sx={12} md={6} lg={5}>
-          <Typography className='data'>
+          <Typography className='data' color="common.white">
               Current block number: {blockNumber}  
           </Typography>
         </Grid>
         <Grid item sx={12} md={6} lg={5}>
-          <Typography >
+          <Typography color="common.white">
               Has Escrow Expired: {expiration}
           </Typography>
         </Grid>
         <Grid item sx={12} md={6} lg={5}>
-          <Typography >
+          <Typography color="common.white">
               Balance: {balance}
           </Typography>
         </Grid>
         <Grid item sx={12} md={6} lg={5}>
-          <Typography >
+          <Typography color="common.white">
               Fee Amount: {feeAmount}
           </Typography>
         </Grid>
         <Grid item sx={12} md={6} lg={5}>
-          <Typography >
+          <Typography color="common.white">
               Seller Cancelled: {sellerCancelled}
           </Typography>
         </Grid>
         <Grid item sx={12} md={6} lg={5}>
-          <Typography >
+          <Typography color="common.white">
               Buyer Cancelled: {buyerCancelled}
           </Typography>
         </Grid>
         <Grid item sx={12} md={6} lg={5}>
-          <Typography >
+          <Typography color="common.white">
               Seller Approved: {sellerApproved}
           </Typography>
         </Grid>
         <Grid item sx={12} md={6} lg={5}>
-          <Typography >
+          <Typography color="common.white">
               Seller Amount: {sAmount}
           </Typography>
         </Grid>
         <Grid item sx={12} md={6} lg={5}>
-          <Typography >
+          <Typography color="common.white">
               Buyer Approved: {buyerApproved}
           </Typography>
         </Grid>
         <Grid item sx={12} md={6} lg={5}>
-          <Typography >
+          <Typography color="common.white">
               Deposits: {deposits}
           </Typography>
         </Grid>
         <Grid item sx={12} md={6} lg={5}>
-          <Typography >
+          <Typography color="common.white">
               Status: {escrowStatus}
           </Typography>
         </Grid>
@@ -286,7 +286,7 @@ function Contract({ blockchain }) {
               </Button>
             </form>
 
-              <Typography variant="h5" p={5} pb={1} >
+              <Typography variant="h5" p={5} pb={1} color="common.white">
                 Buyer Deposit
               </Typography>
 

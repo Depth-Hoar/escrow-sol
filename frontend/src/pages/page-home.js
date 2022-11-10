@@ -70,7 +70,7 @@ function Home({ blockchain }) {
     <div>
       <div className="App">
         <header className="App-header">
-          <Typography variant="h3" p={3}>
+          <Typography variant="h3" p={3} color="common.white">
               Escrow Decentralized Application
           </Typography>
           <Box sx={{ minHeight: 377 }} p={10}>
@@ -78,7 +78,8 @@ function Home({ blockchain }) {
               <Box sx={{ minHeight: 377 }}>
                 <Typography 
                   variant='h5'
-                  sx={{ pb: 5}}>
+                  sx={{ pb: 5}}
+                  color="common.white">
                   Create a new Escrow Contract
                 </Typography>
                 <Paper  elevation={3} sx={{ p:4, pl:10, pr:10 }}>
@@ -125,7 +126,8 @@ function Home({ blockchain }) {
             <Box sx={{ minHeight: 377 }}>
               <Typography 
                 variant='h5'
-                sx={{pb:3}}>
+                sx={{pb:3}}
+                color="common.white">
                 Load an existing Escrow Contract
               </Typography>
               <form noValidate autoComplete='off' onSubmit={handleSubmit} >
@@ -145,11 +147,11 @@ function Home({ blockchain }) {
                     </Button>
                   </Box>
               </form>
-              <Typography variant='h6'>
+              <Typography variant='h6' color="common.white">
                 All escrows created on this platform:
               </Typography>
               {escrows.map((escrows) => (
-            <Typography key={escrows}>
+            <Typography key={escrows} color="common.white">
             {/* TODO add key for mapping */}
                 {escrows}
               </Typography>
