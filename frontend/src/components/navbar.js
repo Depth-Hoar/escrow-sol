@@ -7,15 +7,30 @@ import { useNavigate } from 'react-router-dom';
 import { ethers } from "ethers";
 import React, { useEffect, useState } from "react";
 import Blockies from 'react-blockies';
-
+import config from '../config';
 
 
 const NavBar = ({ blockchain }) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [account, setAccount] = useState(null);
   const [balance, setBalance] = useState(null);
+  const [chainId, setchainId] = useState("7A69");
+
+  // console.log(config);
 
   const navigate = useNavigate();
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  // const network = provider.getNetwork();
+  // console.log(network.chainId, 'network');
+  // console.log(`0x${network.chainId.toString(16)}`, 'network');
+
+  const loadChainId = async () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const network = await provider.getNetwork();
+    console.log(network.chainId, 'network');
+    console.log(`0x${network.chainId.toString(16)}`, 'network');
+    setchainId(`0x${network.chainId.toString(16)}`);
+  }
   
   useEffect(() => {
     if (window.ethereum) {
@@ -53,7 +68,7 @@ const NavBar = ({ blockchain }) => {
       console.error(err);
       setErrorMessage("There was a problem connecting to MetaMask");
     }
-    window.ethereum.on("accountsChanged", accountsChanged);
+    window.ethereum.on("accountsChanged", accountsChanged)
   };
 
   // accountsChanged(account);
@@ -62,6 +77,18 @@ const NavBar = ({ blockchain }) => {
     setErrorMessage(null);
     setAccount(null);
   };
+
+  const networkHandler = async (event) => {
+    await window.ethereum.request({ 
+      method: 'wallet_switchEthereumChain',
+      params: [{ chainId: event.target.value }]
+    })
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const network = await provider.getNetwork();
+    console.log(network.chainId, 'network');
+    console.log(`0x${network.chainId.toString(16)}`, 'network');
+    setchainId(`0x${network.chainId.toString(16)}`);
+  }
 
   const home = () => {
     navigate('/', {replace: true});
@@ -89,12 +116,14 @@ const NavBar = ({ blockchain }) => {
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
           Escrow DAPP
         </Typography>
+        <div>
+          <select name='networks' id='networks' value={chainId} onChange={networkHandler}>
+            <option value="0x7A69" >Local Host</option>
+            <option value="0x5" >Goerli</option>
+            <option value="0x7E6" >Beresheet</option>
+          </select>
+        </div>
         {/* </div> */}
-        <Button className='uuuugh'
-          variant='contained'
-          onClick={connectHandler}>
-          Connect Account
-        </Button>
         <Typography       
           sx={{ pl:2}}
           variant="h6" 
@@ -114,11 +143,19 @@ const NavBar = ({ blockchain }) => {
               Account: {account.slice(0,5) + '...' + account.slice(38,42)} 
               <Blockies
                 account={account}
+                // seed={account} TODO seed should work instead of account
                 size={6}
                 scale={3}
+                color='#2187D0'
+                bgColor='#F1F2F9'
+                spotColor='#767F92'
                 className='identicon' />
             </Typography> 
-            : <p href=" ">{''}</p>
+            : <Button
+                variant='contained'
+                onClick={connectHandler}>
+                Connect Account
+              </Button>
           }
         </Typography>
       </Toolbar>
