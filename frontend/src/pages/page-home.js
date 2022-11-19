@@ -1,6 +1,7 @@
 import { Button, Paper, Typography, TextField, Grid } from "@mui/material";
 import { ExpandMore } from '@mui/icons-material';
 import ContractAddress from "../abis/contract-address.json";
+import config from '../config.json';
 import EscrowArtifact from "../abis/escrow-abi/Escrow.json";
 import WalletCard from "../components/wallet.js";
 import Masonry from '@mui/lab/Masonry';
@@ -10,6 +11,8 @@ import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { useNavigate } from 'react-router-dom';
 
+// const contractAddress = config[chainId].depth.address;
+
 const contractAddress = ContractAddress.Factory;
 console.log(contractAddress,"contract");
 
@@ -17,6 +20,18 @@ const array = [];
 console.log(array, 'array2')
 
 function Home({ blockchain }) {
+
+  // const loadBlockchainData = async () => {
+  //   const provider = new ethers.providers.Web3Provider(window.ethereum)
+  //   const { chainId } = await provider.getNetwork()
+  //   console.log(chainId)
+    
+  //   const contractAddress = config[chainId].factory.address;
+  //   console.log(contractAddress,"contract");
+
+  // }
+
+
 
   // list of escrows
   const [escrows, setEscrows] = useState([]);
@@ -42,6 +57,10 @@ function Home({ blockchain }) {
   function addNumber(item, index, array) {
     array[index] = `${index}: ${item}`;
   }
+
+  // useEffect(() => {
+  //   loadBlockchainData()
+  // })
   
   useEffect(() => {
     (async () => {

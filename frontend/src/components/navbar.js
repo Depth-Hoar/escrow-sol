@@ -10,11 +10,47 @@ import Blockies from 'react-blockies';
 import config from '../config';
 
 
+
+  // const chainId = async () => {
+  //   const provider = new ethers.providers.Web3Provider(window.ethereum)
+  //   const { chainId } = await provider.getNetwork()
+  //   console.log(chainId)
+    
+  //   const contractAddress = config[chainId].factory.address;
+  //   console.log(contractAddress,"contract");
+
+  // }
+
+const array = [];
+
 const NavBar = ({ blockchain }) => {
+  
+  const getChainId = async () => {
+    await window.ethereum.request({ method: "eth_requestAccounts" });
+    // console.log(accounts[0])
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
+    const {chainId} = await provider.getNetwork()
+    // array[0] = chainId;
+    array[0] = `0x${chainId.toString(16).toUpperCase()}`;
+    console.log(array[0],'getchainid')
+    
+    // const contractAddress = config[chainId].factory.address;
+    // console.log(contractAddress,"contract");
+    // console.log(config,'chainID')
+
+  }
+  
+  useEffect(() => {
+    getChainId()
+  })
+
+  // getChainId()
+  
   const [errorMessage, setErrorMessage] = useState(null);
   const [account, setAccount] = useState(null);
   const [balance, setBalance] = useState(null);
-  const [chainId, setchainId] = useState("7A69");
+  // const [chainId, setchainId] = useState("7A69");
+  const [chainID, setchainID] = useState("7A69");
 
   // console.log(config);
 
@@ -28,8 +64,9 @@ const NavBar = ({ blockchain }) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const network = await provider.getNetwork();
     console.log(network.chainId, 'network');
-    console.log(`0x${network.chainId.toString(16)}`, 'network');
-    setchainId(`0x${network.chainId.toString(16)}`);
+    const blah = network.chainId.toUpperCase();
+    console.log(`0x${blah.toString(16)}`, 'network');
+    setchainID(`0x${network.chainId.toString(16)}`);
   }
   
   useEffect(() => {
@@ -85,15 +122,29 @@ const NavBar = ({ blockchain }) => {
     })
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const network = await provider.getNetwork();
+    // let {chainId} = await provider.getNetwork()
+    // console.log(network.chainId,'chainID')
     console.log(network.chainId, 'network');
     console.log(`0x${network.chainId.toString(16)}`, 'network');
-    setchainId(`0x${network.chainId.toString(16)}`);
+    setchainID(`0x${network.chainId.toString(16)}`);
+    console.log(`0x${network.chainId.toString(16)}`,'what the cuuuuuuuuuuck')
+    // getChainId()
   }
 
   const home = () => {
     navigate('/', {replace: true});
     window.location.reload();
   }
+
+  // await window.ethereum.request({ method: "eth_requestAccounts" });
+  // // console.log(accounts[0])
+  // const provider = new ethers.providers.Web3Provider(window.ethereum)
+  // let {chainId} = await provider.getNetwork()
+  // console.log(chainId,'chainID')
+  const CHAINID = array[0];
+  console.log(CHAINID, 'chainid!!!!!!!!!!!!!!!!')
+
+  
 
   return (
 <Box sx={{ flexGrow: 1 }}>
@@ -117,11 +168,14 @@ const NavBar = ({ blockchain }) => {
           Escrow DAPP
         </Typography>
         <div>
-          <select name='networks' id='networks' value={chainId} onChange={networkHandler}>
+        {/* {chainID && ( */}
+          {/* <select name='networks' id='networks' value={config[CHAINID] ? `0x${CHAINID.toString(16)}` : `0`} onChange={networkHandler}> */}
+          <select name='networks' id='networks' value={CHAINID} onChange={networkHandler}>
             <option value="0x7A69" >Local Host</option>
             <option value="0x5" >Goerli</option>
             <option value="0x7E6" >Beresheet</option>
           </select>
+          {/* )} */}
         </div>
         {/* </div> */}
         <Typography       
