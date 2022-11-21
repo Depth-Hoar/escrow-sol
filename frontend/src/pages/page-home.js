@@ -21,18 +21,6 @@ console.log(array, 'array2')
 
 function Home({ blockchain }) {
 
-  // const loadBlockchainData = async () => {
-  //   const provider = new ethers.providers.Web3Provider(window.ethereum)
-  //   const { chainId } = await provider.getNetwork()
-  //   console.log(chainId)
-    
-  //   const contractAddress = config[chainId].factory.address;
-  //   console.log(contractAddress,"contract");
-
-  // }
-
-
-
   // list of escrows
   const [escrows, setEscrows] = useState([]);
   // input
@@ -58,13 +46,9 @@ function Home({ blockchain }) {
     array[index] = `${index}: ${item}`;
   }
 
-  // useEffect(() => {
-  //   loadBlockchainData()
-  // })
   
   useEffect(() => {
     (async () => {
-      await blockchain.factory.getAllContracts();
       const allEscrows = await blockchain.factory.getAllContracts();
       const reloadEscrows = [...allEscrows];
       reloadEscrows.forEach(addNumber);

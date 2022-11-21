@@ -14,7 +14,7 @@ const getBlockchain = () =>
       const signerAddress = await signer.getAddress();
 
       const { chainId } = await provider.getNetwork()
-      console.log(chainId,'chain id')
+      // console.log(chainId,'chain id')
 
       const factory = new Contract(
         // ContractAddress.Factory,
@@ -24,7 +24,7 @@ const getBlockchain = () =>
       );
 
       resolve({ signerAddress, factory });
-      console.log(factory,'factory')
+      // console.log(factory,'factory')
     }
     resolve({ signerAddress: undefined, factory: undefined });
   });
