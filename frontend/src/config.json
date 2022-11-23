@@ -2,16 +2,19 @@
   "31337": {
     "factory": {
       "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3"
-    }
+    },
+    "explorerURL": "#"
   },
   "5": {
     "factory": {
       "address": "0xCEd5BBAb616b5aC169CB33D2a3ECca42F47efBf1"
-    }
+    },
+    "explorerURL": "https://goerli.etherscan.io"
   },
   "2022": {
     "factory": {
       "address": "0xc2a88b3BeBf2E767ea982c8d5108c6f99B5Cd5Da"
-    }
+    },
+    "explorerURL": "https://testnet.edgscan.live"
   }
 }

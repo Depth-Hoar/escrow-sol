@@ -45,10 +45,10 @@ function Home({ blockchain }) {
   function addNumber(item, index, array) {
     array[index] = `${index}: ${item}`;
   }
-
   
   useEffect(() => {
     (async () => {
+      await blockchain
       const allEscrows = await blockchain.factory.getAllContracts();
       const reloadEscrows = [...allEscrows];
       reloadEscrows.forEach(addNumber);

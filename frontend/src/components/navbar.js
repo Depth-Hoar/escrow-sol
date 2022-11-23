@@ -1,5 +1,5 @@
 import './navbar.css';
-import { ThemeProvider, AppBar, Toolbar, Button, Typography, Box, Select, MenuItem } from '@mui/material'
+import { ThemeProvider, AppBar, Toolbar, Button, Typography, Box, Select, MenuItem, Link } from '@mui/material'
 import { Menu } from '@mui/icons-material';
 // import { getBlockchain, showError } from "./utils/common.js";
 import { showError } from "../utils/common";
@@ -136,11 +136,19 @@ const NavBar = ({ blockchain }) => {
           component="div">
           {/* Ternary operator if else in line. if account show account if no account leave empty string */}
           {account ? 
-            <Typography sx={{ pl:2,  }}>
-              Account: {account.slice(0,5) + '...' + account.slice(38,42)} 
+            <Typography 
+              underline="none"
+              sx={{ pl:2 }}
+            >
+              <Link 
+                href={config[chainID] ? `${config[chainID].explorerURL}/address/${account}` : '#'}
+                underline="none"
+                color="textPrimary"
+              >
+                Account: {account.slice(0,5) + '...' + account.slice(38,42)} 
+              </Link>
               <Blockies
-                // account={account}
-                seed={account} //TODO seed should work instead of account
+                seed={account}
                 size={6}
                 scale={3}
                 color='#2187D0'
