@@ -1,7 +1,6 @@
 // import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Button, Paper, Stack, Typography, TextField, Grid, Box } from "@mui/material";
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 // import { getBlockchain, showError } from "./utils/common";
 import ContractAddress from "../abis/contract-address.json";
 import WalletCard from "../components/wallet.js";

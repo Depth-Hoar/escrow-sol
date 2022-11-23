@@ -16,7 +16,8 @@ const theme = createTheme({
     mode: 'dark',
     primary: {
       // main: '#e53939',
-      main: red[500],
+      // main: red[500],
+      main: '#FF3B80',
     },
     secondary: {
        main: green[500],
@@ -27,17 +28,23 @@ const theme = createTheme({
       // main: '#e53939',
       main: red[500],
     },
-    fontFamily: '',
-    fontWeightLight: 300,
-    fontWeightRegular: 400,
-    fontWeightMedium: 500,
-    fontWeightBold: 600,
+    fontFamily: 'Space Grotesk',
+    // fontFamily: 'Space Grotesk',
+    fontWeightLight: 400,
+    fontWeightRegular: 500,
+    fontWeightMedium: 600,
+    fontWeightBold: 700,
   }
 });
 
 function App() {
 
   const [blockchain, setBlockchain] = useState({});
+
+  // TODO reload on account change
+  // window.ethereum.on('accountsChanged', () => {
+  //   loadAccount(provider, dispatch)
+  // })
 
 
   useEffect(() => {

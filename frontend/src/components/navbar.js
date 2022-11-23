@@ -1,5 +1,5 @@
 import './navbar.css';
-import { ThemeProvider, AppBar, Toolbar, Button, Typography, Box, Link } from '@mui/material'
+import { ThemeProvider, AppBar, Toolbar, Button, Typography, Box, Select, MenuItem } from '@mui/material'
 import { Menu } from '@mui/icons-material';
 // import { getBlockchain, showError } from "./utils/common.js";
 import { showError } from "../utils/common";
@@ -111,15 +111,15 @@ const NavBar = ({ blockchain }) => {
             noWrap
             component="div"
             onClick={home}
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block', cursor: 'pointer' } }}>
           Escrow DAPP
         </Typography>
         <div>
-          <select name='networks' id='networks' value={config[chainID] ? `0x${chainID.toString(16).toUpperCase()}` : `0`} onChange={networkHandler}>
-            <option value="0x7E6" >Beresheet</option>
-            <option value="0x5" >Goerli</option>
-            <option value="0x7A69" >Local Host</option>
-          </select>
+        <Select id='networks' value={config[chainID] ? `0x${chainID.toString(16).toUpperCase()}` : `0`} onChange={networkHandler}>
+            <MenuItem value="0x7E6" >Beresheet</MenuItem>
+            <MenuItem value="0x5" >Goerli</MenuItem>
+            <MenuItem value="0x7A69" >Local Host</MenuItem>
+          </Select>
         </div>
         <Typography       
           sx={{ pl:2}}
@@ -146,7 +146,7 @@ const NavBar = ({ blockchain }) => {
                 color='#2187D0'
                 bgColor='#F1F2F9'
                 spotColor='#767F92'
-                className='identicon' 
+                className='blocky' 
                 />
             </Typography> 
             : <Button
