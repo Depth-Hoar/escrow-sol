@@ -48,7 +48,6 @@ function Home({ blockchain }) {
   
   useEffect(() => {
     (async () => {
-      await blockchain
       const allEscrows = await blockchain.factory.getAllContracts();
       const reloadEscrows = [...allEscrows];
       reloadEscrows.forEach(addNumber);
@@ -90,14 +89,14 @@ function Home({ blockchain }) {
                     The address which creates the new Escrow contract is the owner of the contract. This address is responsible for correctly initializing the buyer and seller addresses as well as resolve disputes.
                   </Typography>
                 </Paper>
-                <ExpandMore />
+                <ExpandMore color="primary"/>
                 <Paper  elevation={3} sx={{ p:4, pl:10, pr:10 }}>
                   <Typography>
                     The buyer can independently deposit ethers into the escrow any number of times.
                   </Typography>
                 </Paper>
-                <ExpandMore sx={{paddingRight:20, align: 'left'}} />
-                <ExpandMore sx={{paddingLeft:20, align: 'right'}} />
+                <ExpandMore sx={{paddingRight:20, align: 'left'}} color="primary" />
+                <ExpandMore sx={{paddingLeft:20, align: 'right'}} color="primary" />
                 <Masonry columns={2} >
                   <Paper  elevation={3} sx={{ padding:2, align: 'left'}}>
                     <Typography>
@@ -110,18 +109,19 @@ function Home({ blockchain }) {
                     </Typography>
                   </Paper>
                 </Masonry>
-                <ExpandMore sx={{paddingRight:20, align: 'left'}} />
-                <ExpandMore sx={{paddingLeft:20, align: 'right'}} />
+                <ExpandMore sx={{paddingRight:20, align: 'left'}} color="primary" />
+                <ExpandMore sx={{paddingLeft:20, align: 'right'}} color="primary" />
                 <Paper elevation={3} sx={{p:4, align: 'left', display: 'flex'}}>
                   <Typography>
                     Neither the creators of the escrow platform nor the owner will have any authority to launder with the money deposited into the smart contract. But they are no way accountable for any monetary losses incurred.
                   </Typography>
                 </Paper>
-                <ExpandMore/>
+                <ExpandMore color="primary"/>
                 <Box>
                   <Button
                     variant='contained' 
-                    onClick={newEscrow} >
+                    onClick={newEscrow} 
+                  >
                     Create New Escrow Contract
                   </Button>
                 </Box>
@@ -130,7 +130,8 @@ function Home({ blockchain }) {
               <Typography 
                 variant='h5'
                 sx={{pb:3}}
-                color="common.white">
+                color="common.white"
+              >
                 Load an existing Escrow Contract
               </Typography>
               <form noValidate autoComplete='off' onSubmit={handleSubmit} >

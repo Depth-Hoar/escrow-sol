@@ -9,6 +9,7 @@ import { styled } from '@mui/material/styles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Masonry from '@mui/lab/Masonry';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
+import { ethers } from "ethers";
 
 import React, { useEffect, useState } from "react";
 // import { Home } from './page-home';
@@ -16,7 +17,7 @@ import { showError, getBlockchain } from "../utils/common";
 import { array } from './page-home';
 
 
-
+let array2 = [];
 
 function Contract({ blockchain }) {
 
@@ -55,14 +56,21 @@ function Contract({ blockchain }) {
     e.preventDefault();
     if (window.ethereum) {
       try {
-      const init = await Escrow.initEscrow(newEscrow.seller, newEscrow.buyer, newEscrow.percentage, newEscrow.blockNumber);
-      // console.log(init,'init');
+      await Escrow.initEscrow(newEscrow.seller, newEscrow.buyer, newEscrow.percentage, newEscrow.blockNumber);
     } 
     catch (error) {
       showError(error);
     }
     handleClose();
   }};
+
+  const parseEth = (n) => {
+    return ethers.utils.parseUnits(n.toString(), 18)
+  }
+
+  const formatEth = (n) => {
+    return ethers.utils.formatUnits(n.toString(), 18)
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -73,9 +81,8 @@ function Contract({ blockchain }) {
     e.preventDefault();
     if (window.ethereum) {
       try {
-      await Escrow.depositToEscrow({ value: amount });
-      const balance = await Escrow.totalEscrowBalance();
-      // console.log(balance.toString(),'escrow balance');
+      await Escrow.depositToEscrow({ value: parseEth(amount) });
+      await Escrow.totalEscrowBalance();
     } 
     catch (error) {
       showError(error);
@@ -86,10 +93,8 @@ function Contract({ blockchain }) {
   const approve = async () => {
     if (window.ethereum) {
       try {
-      const approved = await Escrow.approveEscrow();
-      // console.log(approved, 'approved');
-      const approvalState = await Escrow.checkEscrowStatus();
-      // console.log(approvalState, 'approvalState');
+      await Escrow.approveEscrow();
+      await Escrow.checkEscrowStatus();
     } 
     catch (error) {
       showError(error);
@@ -101,8 +106,7 @@ function Contract({ blockchain }) {
     if (window.ethereum) {
       try {
       await Escrow.cancelEscrow();
-      const balance = await Escrow.totalEscrowBalance();
-      // console.log(balance.toString(),'escrow balance');
+      await Escrow.totalEscrowBalance();
     } 
     catch (error) {
       showError(error);
@@ -132,6 +136,11 @@ function Contract({ blockchain }) {
 
   // getter functions
   useEffect(() => {
+
+    function configDeposits(item, index, array) {
+      array[index] = `${formatEth(item)}, `;
+
+    }
     (async () => {
       const bNumber = await Escrow.getBlockNumber();
       setBlockNumber(bNumber.toNumber());
@@ -151,8 +160,12 @@ function Contract({ blockchain }) {
       setSellerApproved(sellerApproved.toString());
       const buyerApproved = await Escrow.hasBuyerApproved();
       BuyerApproved(buyerApproved.toString());
+
       const allDeposits = await Escrow.getAllDeposits();
-      setDeposits(allDeposits.toString());
+      const reloadAllDeposits = [...allDeposits];
+      reloadAllDeposits.forEach(configDeposits);
+      setDeposits(reloadAllDeposits);
+
       const cAddress = await Escrow.getEscrowContractAddress();
       setContractAddress(cAddress.toString());
       const status = await Escrow.checkEscrowStatus();
@@ -203,12 +216,12 @@ function Contract({ blockchain }) {
         </Grid>
         <Grid item sx={12} md={6} lg={5}>
           <Typography color="common.white">
-              Balance: {balance}
+              Balance: {formatEth(balance)}
           </Typography>
         </Grid>
         <Grid item sx={12} md={6} lg={5}>
           <Typography color="common.white">
-              Fee Amount: {feeAmount}
+              Fee Amount: {formatEth(feeAmount)}
           </Typography>
         </Grid>
         <Grid item sx={12} md={6} lg={5}>
@@ -228,7 +241,7 @@ function Contract({ blockchain }) {
         </Grid>
         <Grid item sx={12} md={6} lg={5}>
           <Typography color="common.white">
-              Seller Amount: {sAmount}
+              Seller Amount: {formatEth(sAmount)}
           </Typography>
         </Grid>
         <Grid item sx={12} md={6} lg={5}>
