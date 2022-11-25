@@ -1,9 +1,7 @@
 import { Button, Paper, Typography, TextField, Grid } from "@mui/material";
 import { ExpandMore } from '@mui/icons-material';
 import ContractAddress from "../abis/contract-address.json";
-import config from '../config.json';
 import EscrowArtifact from "../abis/escrow-abi/Escrow.json";
-import WalletCard from "../components/wallet.js";
 import Masonry from '@mui/lab/Masonry';
 import Box from '@mui/material/Box';
 import { showError } from "../utils/common";
@@ -11,13 +9,7 @@ import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { useNavigate } from 'react-router-dom';
 
-// const contractAddress = config[chainId].depth.address;
-
-const contractAddress = ContractAddress.Factory;
-console.log(contractAddress,"contract");
-
 const array = [];
-console.log(array, 'array2')
 
 function Home({ blockchain }) {
 
@@ -58,13 +50,10 @@ function Home({ blockchain }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const loadEscrow = escrow;
-    console.log(loadEscrow, 'loadEscrow');
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const newEscrow = new ethers.Contract(loadEscrow, EscrowArtifact, signer);
-    console.log(newEscrow, 'newEscrow');
     array[0] = newEscrow;
-    console.log(array, 'array1')
     navigate('/contract', {replace: false});
   }
 
@@ -165,9 +154,6 @@ function Home({ blockchain }) {
         </Box>
         </header>
       </div>
-    {/* <Grid container sx={{ justifyContent: 'center' }}>
-      <WalletCard  />
-    </Grid> */}
     </div>
   );
 }

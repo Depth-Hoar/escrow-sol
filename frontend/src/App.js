@@ -4,32 +4,22 @@ import { useEffect, useState } from 'react';
 import { getBlockchain } from './utils/common'
 import NavBar from "./components/navbar.js";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { green, red, deep } from '@mui/material/colors';
 
 import Home from './pages/page-home';
 import Contract from './pages/page-contract';
-import Init from './pages/page-init';
-import Deposit from './pages/page-deposit';
 
 const theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      // main: '#e53939',
-      // main: red[500],
       main: '#FF3B80',
     },
     secondary: {
-       main: green[500],
+       main: '#FB6C9F',
     },
   },
   typography: {
-    primary: {
-      // main: '#e53939',
-      main: red[500],
-    },
     fontFamily: 'Space Grotesk',
-    // fontFamily: 'Space Grotesk',
     fontWeightLight: 400,
     fontWeightRegular: 500,
     fontWeightMedium: 600,
@@ -40,12 +30,6 @@ const theme = createTheme({
 function App() {
 
   const [blockchain, setBlockchain] = useState({});
-
-  // TODO reload on account change
-  // window.ethereum.on('accountsChanged', () => {
-  //   loadAccount(provider, dispatch)
-  // })
-
 
   useEffect(() => {
     (async () => {
@@ -60,8 +44,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home blockchain={blockchain} />} />
           <Route path="/contract" element={<Contract />} />
-          <Route path="/init" element={<Init />} />
-          <Route path="/deposit" element={<Deposit />} />
         </Routes>
       </ThemeProvider>
     </div>

@@ -1,23 +1,10 @@
-// import './App.css';
 import { Button, Paper, Stack, Typography, TextField, Grid, Box } from "@mui/material";
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-// import { getBlockchain, showError } from "./utils/common";
-import ContractAddress from "../abis/contract-address.json";
-import WalletCard from "../components/wallet.js";
-// import { red } from '@mui/material/colors';
-import { styled } from '@mui/material/styles';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Masonry from '@mui/lab/Masonry';
-import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import { ethers } from "ethers";
-
 import React, { useEffect, useState } from "react";
 // import { Home } from './page-home';
 import { showError, getBlockchain } from "../utils/common";
 import { array } from './page-home';
 
-
-let array2 = [];
 
 function Contract({ blockchain }) {
 
@@ -50,7 +37,6 @@ function Contract({ blockchain }) {
   };
 
   const Escrow = array[0];
-  // console.log(Escrow);
 
   const initEscrow = async (e) => {
     e.preventDefault();
@@ -74,7 +60,6 @@ function Contract({ blockchain }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //console.log(newEscrow, 'newEscrow');
   }
 
   const depositToEscrow = async (e) => {
@@ -127,7 +112,6 @@ function Contract({ blockchain }) {
   }};
 
   const handleChange = async (e) => {
-    // console.log(e.target.value,'target');
     const {name, value} = e.target
     setNewEscrow((prev) => {
       return{...prev, [name]: value }
@@ -319,9 +303,6 @@ function Contract({ blockchain }) {
               <Box sx={{ p:10 }}/>
             </Box>
           </Grid>
-        {/* <Grid container sx={{ justifyContent: 'center' }}>
-          <WalletCard  />
-        </Grid>  */}
       </header>
     </div>
     </div>

@@ -14,17 +14,14 @@ const getBlockchain = () =>
       const signerAddress = await signer.getAddress();
 
       const { chainId } = await provider.getNetwork()
-      // console.log(chainId,'chain id')
 
       const factory = new Contract(
-        // ContractAddress.Factory,
         config[chainId].factory.address,
         FactoryArtifact.abi,
         signer
       );
 
       resolve({ signerAddress, factory });
-      // console.log(factory,'factory')
     }
     resolve({ signerAddress: undefined, factory: undefined });
   });

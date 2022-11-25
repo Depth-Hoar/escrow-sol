@@ -13,8 +13,6 @@ describe('Factory', function () {
     await factory.connect(escrowOwner).createContract();
     const allEscrowContracts = await factory.getAllContracts();
     expect(allEscrowContracts.length).to.equal(1);
-
-    // await escrow.connect(buyer).depositToEscrow({value: ethers.utils.parseEther('10')});
 	});
 
 });
@@ -94,8 +92,6 @@ describe('Escrow', function () {
     });
     escrowBalance = await ethers.provider.getBalance(escrow.address);
     expect(escrowBalance).to.equal(ethers.utils.parseEther('10'));
-    // const test = window.ethereum;
-    // console.log(test,"test");
   });
 
 });

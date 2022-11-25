@@ -1,6 +1,5 @@
 import './navbar.css';
-import { ThemeProvider, AppBar, Toolbar, Button, Typography, Box, Select, MenuItem, Link } from '@mui/material'
-import { Menu } from '@mui/icons-material';
+import { AppBar, Toolbar, Button, Typography, Box, Select, MenuItem, Link } from '@mui/material'
 // import { getBlockchain, showError } from "./utils/common.js";
 import { showError } from "../utils/common";
 import { useNavigate } from 'react-router-dom';
@@ -36,8 +35,6 @@ const NavBar = ({ blockchain }) => {
 
 
   const accountsChanged = async (newAccount) => {
-    // setAccount(newAccount);
-    // console.log(newAccount,'newaccount');
     try {
       const balance = await window.ethereum.request({
         method: "eth_getBalance",
@@ -89,8 +86,6 @@ const NavBar = ({ blockchain }) => {
     navigate('/', {replace: true});
     window.location.reload();
   }
-
-  console.log(account, 'account')
   
   return (
 <Box sx={{ flexGrow: 1 }}>
@@ -151,9 +146,9 @@ const NavBar = ({ blockchain }) => {
                 seed={account}
                 size={6}
                 scale={3}
-                color='#2187D0'
-                bgColor='#F1F2F9'
-                spotColor='#767F92'
+                color='#FF3B80'
+                bgColor='#161616'
+                spotColor='#F1F2F9'
                 className='blocky' 
                 />
             </Typography> 
