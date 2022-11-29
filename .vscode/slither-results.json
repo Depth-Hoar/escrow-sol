@@ -5,7 +5,7 @@
 				"type": "function",
 				"name": "refund",
 				"source_mapping": {
-					"start": 4029,
+					"start": 4032,
 					"length": 89,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -27,7 +27,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -268,7 +268,7 @@
 				"type": "node",
 				"name": "address(buyer).transfer(address(this).balance)",
 				"source_mapping": {
-					"start": 4065,
+					"start": 4068,
 					"length": 46,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -287,7 +287,7 @@
 						"type": "function",
 						"name": "refund",
 						"source_mapping": {
-							"start": 4029,
+							"start": 4032,
 							"length": 89,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
@@ -308,7 +308,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -562,7 +562,7 @@
 				"type": "function",
 				"name": "fee",
 				"source_mapping": {
-					"start": 3843,
+					"start": 3846,
 					"length": 180,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -586,7 +586,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -827,7 +827,7 @@
 				"type": "node",
 				"name": "address(escrowOwner).transfer(totalFee)",
 				"source_mapping": {
-					"start": 3977,
+					"start": 3980,
 					"length": 39,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -846,7 +846,7 @@
 						"type": "function",
 						"name": "fee",
 						"source_mapping": {
-							"start": 3843,
+							"start": 3846,
 							"length": 180,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
@@ -869,7 +869,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -1123,7 +1123,7 @@
 				"type": "function",
 				"name": "payOutFromEscrow",
 				"source_mapping": {
-					"start": 3505,
+					"start": 3508,
 					"length": 332,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -1149,7 +1149,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -1390,7 +1390,7 @@
 				"type": "node",
 				"name": "address(seller).transfer(address(this).balance)",
 				"source_mapping": {
-					"start": 3783,
+					"start": 3786,
 					"length": 47,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -1409,7 +1409,7 @@
 						"type": "function",
 						"name": "payOutFromEscrow",
 						"source_mapping": {
-							"start": 3505,
+							"start": 3508,
 							"length": 332,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
@@ -1434,7 +1434,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -1688,7 +1688,7 @@
 				"type": "function",
 				"name": "fee",
 				"source_mapping": {
-					"start": 3843,
+					"start": 3846,
 					"length": 180,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -1712,7 +1712,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -1953,7 +1953,7 @@
 				"type": "node",
 				"name": "totalFee = address(this).balance * (feePercent / 100)",
 				"source_mapping": {
-					"start": 3876,
+					"start": 3879,
 					"length": 61,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -1972,7 +1972,7 @@
 						"type": "function",
 						"name": "fee",
 						"source_mapping": {
-							"start": 3843,
+							"start": 3846,
 							"length": 180,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
@@ -1995,7 +1995,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -2250,7 +2250,7 @@
 				"name": "initEscrow",
 				"source_mapping": {
 					"start": 1661,
-					"length": 476,
+					"length": 479,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
 					"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -2277,7 +2277,7 @@
 					],
 					"starting_column": 5,
 					"ending_column": 6,
-					"_ext_source_hash": "9d0efc369842c583591ba894ce0a5533"
+					"_ext_source_hash": "827e3f8bbb04e049db460a865de82dbb"
 				},
 				"type_specific_fields": {
 					"parent": {
@@ -2285,7 +2285,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -2526,7 +2526,7 @@
 				"type": "node",
 				"name": "buyer = _buyer",
 				"source_mapping": {
-					"start": 1942,
+					"start": 1945,
 					"length": 14,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -2546,7 +2546,7 @@
 						"name": "initEscrow",
 						"source_mapping": {
 							"start": 1661,
-							"length": 476,
+							"length": 479,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -2580,7 +2580,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -2835,7 +2835,7 @@
 				"name": "initEscrow",
 				"source_mapping": {
 					"start": 1661,
-					"length": 476,
+					"length": 479,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
 					"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -2862,7 +2862,7 @@
 					],
 					"starting_column": 5,
 					"ending_column": 6,
-					"_ext_source_hash": "9d0efc369842c583591ba894ce0a5533"
+					"_ext_source_hash": "827e3f8bbb04e049db460a865de82dbb"
 				},
 				"type_specific_fields": {
 					"parent": {
@@ -2870,7 +2870,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -3111,7 +3111,7 @@
 				"type": "node",
 				"name": "feePercent = _feePercent",
 				"source_mapping": {
-					"start": 1966,
+					"start": 1969,
 					"length": 24,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -3131,7 +3131,7 @@
 						"name": "initEscrow",
 						"source_mapping": {
 							"start": 1661,
-							"length": 476,
+							"length": 479,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -3165,7 +3165,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -3408,7 +3408,7 @@
 				"type": "node",
 				"name": "blockNumber = _blockNum",
 				"source_mapping": {
-					"start": 2000,
+					"start": 2003,
 					"length": 23,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -3428,7 +3428,7 @@
 						"name": "initEscrow",
 						"source_mapping": {
 							"start": 1661,
-							"length": 476,
+							"length": 479,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -3462,7 +3462,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -3758,7 +3758,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -4043,7 +4043,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -4364,7 +4364,7 @@
 						"name": "initEscrow",
 						"source_mapping": {
 							"start": 1661,
-							"length": 476,
+							"length": 479,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -4398,7 +4398,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -4676,7 +4676,7 @@
 						"name": "initEscrow",
 						"source_mapping": {
 							"start": 1661,
-							"length": 476,
+							"length": 479,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -4710,7 +4710,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -4988,7 +4988,7 @@
 						"name": "initEscrow",
 						"source_mapping": {
 							"start": 1661,
-							"length": 476,
+							"length": 479,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -5022,7 +5022,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -5300,7 +5300,7 @@
 						"name": "initEscrow",
 						"source_mapping": {
 							"start": 1661,
-							"length": 476,
+							"length": 479,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -5334,7 +5334,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -5592,7 +5592,7 @@
 				"type": "function",
 				"name": "approveEscrow",
 				"source_mapping": {
-					"start": 2444,
+					"start": 2447,
 					"length": 429,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -5624,7 +5624,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -5865,7 +5865,7 @@
 				"type": "node",
 				"name": "fee()",
 				"source_mapping": {
-					"start": 2749,
+					"start": 2752,
 					"length": 5,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -5884,7 +5884,7 @@
 						"type": "function",
 						"name": "approveEscrow",
 						"source_mapping": {
-							"start": 2444,
+							"start": 2447,
 							"length": 429,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
@@ -5915,7 +5915,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -6161,7 +6161,7 @@
 				"type": "node",
 				"name": "address(escrowOwner).transfer(totalFee)",
 				"source_mapping": {
-					"start": 3977,
+					"start": 3980,
 					"length": 39,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -6180,7 +6180,7 @@
 						"type": "function",
 						"name": "fee",
 						"source_mapping": {
-							"start": 3843,
+							"start": 3846,
 							"length": 180,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
@@ -6203,7 +6203,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -6449,7 +6449,7 @@
 				"type": "node",
 				"name": "payOutFromEscrow()",
 				"source_mapping": {
-					"start": 2768,
+					"start": 2771,
 					"length": 18,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -6468,7 +6468,7 @@
 						"type": "function",
 						"name": "approveEscrow",
 						"source_mapping": {
-							"start": 2444,
+							"start": 2447,
 							"length": 429,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
@@ -6499,7 +6499,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -6745,7 +6745,7 @@
 				"type": "node",
 				"name": "address(seller).transfer(address(this).balance)",
 				"source_mapping": {
-					"start": 3783,
+					"start": 3786,
 					"length": 47,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -6764,7 +6764,7 @@
 						"type": "function",
 						"name": "payOutFromEscrow",
 						"source_mapping": {
-							"start": 3505,
+							"start": 3508,
 							"length": 332,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
@@ -6789,7 +6789,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -7035,7 +7035,7 @@
 				"type": "node",
 				"name": "payOutFromEscrow()",
 				"source_mapping": {
-					"start": 2768,
+					"start": 2771,
 					"length": 18,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -7054,7 +7054,7 @@
 						"type": "function",
 						"name": "approveEscrow",
 						"source_mapping": {
-							"start": 2444,
+							"start": 2447,
 							"length": 429,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
@@ -7085,7 +7085,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -7332,7 +7332,7 @@
 				"type": "node",
 				"name": "balances[buyer] = balances[buyer] - address(this).balance",
 				"source_mapping": {
-					"start": 3551,
+					"start": 3554,
 					"length": 57,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -7351,7 +7351,7 @@
 						"type": "function",
 						"name": "payOutFromEscrow",
 						"source_mapping": {
-							"start": 3505,
+							"start": 3508,
 							"length": 332,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
@@ -7376,7 +7376,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -7623,7 +7623,7 @@
 				"type": "node",
 				"name": "balances[seller] = balances[seller] + address(this).balance",
 				"source_mapping": {
-					"start": 3618,
+					"start": 3621,
 					"length": 59,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -7642,7 +7642,7 @@
 						"type": "function",
 						"name": "payOutFromEscrow",
 						"source_mapping": {
-							"start": 3505,
+							"start": 3508,
 							"length": 332,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
@@ -7667,7 +7667,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -7914,7 +7914,7 @@
 				"type": "node",
 				"name": "payOutFromEscrow()",
 				"source_mapping": {
-					"start": 2768,
+					"start": 2771,
 					"length": 18,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -7933,7 +7933,7 @@
 						"type": "function",
 						"name": "approveEscrow",
 						"source_mapping": {
-							"start": 2444,
+							"start": 2447,
 							"length": 429,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
@@ -7964,7 +7964,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -8211,7 +8211,7 @@
 				"type": "node",
 				"name": "escrowState = EscrowState.escrowComplete",
 				"source_mapping": {
-					"start": 3687,
+					"start": 3690,
 					"length": 40,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -8230,7 +8230,7 @@
 						"type": "function",
 						"name": "payOutFromEscrow",
 						"source_mapping": {
-							"start": 3505,
+							"start": 3508,
 							"length": 332,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
@@ -8255,7 +8255,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -8502,7 +8502,7 @@
 				"type": "node",
 				"name": "payOutFromEscrow()",
 				"source_mapping": {
-					"start": 2768,
+					"start": 2771,
 					"length": 18,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -8521,7 +8521,7 @@
 						"type": "function",
 						"name": "approveEscrow",
 						"source_mapping": {
-							"start": 2444,
+							"start": 2447,
 							"length": 429,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
@@ -8552,7 +8552,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -8799,7 +8799,7 @@
 				"type": "node",
 				"name": "sellerAmount = address(this).balance",
 				"source_mapping": {
-					"start": 3737,
+					"start": 3740,
 					"length": 36,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -8818,7 +8818,7 @@
 						"type": "function",
 						"name": "payOutFromEscrow",
 						"source_mapping": {
-							"start": 3505,
+							"start": 3508,
 							"length": 332,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
@@ -8843,7 +8843,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -9090,7 +9090,7 @@
 				"type": "node",
 				"name": "ServicePayment(block.number,address(this).balance)",
 				"source_mapping": {
-					"start": 2800,
+					"start": 2803,
 					"length": 56,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -9109,7 +9109,7 @@
 						"type": "function",
 						"name": "approveEscrow",
 						"source_mapping": {
-							"start": 2444,
+							"start": 2447,
 							"length": 429,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
@@ -9140,7 +9140,7 @@
 								"name": "Escrow",
 								"source_mapping": {
 									"start": 639,
-									"length": 5864,
+									"length": 5867,
 									"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 									"filename_relative": "contracts/Escrow.sol",
 									"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -9397,7 +9397,7 @@
 				"type": "function",
 				"name": "cancelEscrow",
 				"source_mapping": {
-					"start": 2879,
+					"start": 2882,
 					"length": 338,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -9427,7 +9427,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -9679,7 +9679,7 @@
 				"type": "function",
 				"name": "approveEscrow",
 				"source_mapping": {
-					"start": 2444,
+					"start": 2447,
 					"length": 429,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -9711,7 +9711,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -10037,7 +10037,7 @@
 				"type": "function",
 				"name": "checkEscrowStatus",
 				"source_mapping": {
-					"start": 4239,
+					"start": 4242,
 					"length": 98,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -10059,7 +10059,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -10311,7 +10311,7 @@
 				"type": "function",
 				"name": "hasSellerCancelled",
 				"source_mapping": {
-					"start": 5060,
+					"start": 5063,
 					"length": 149,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -10336,7 +10336,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -10588,7 +10588,7 @@
 				"type": "function",
 				"name": "getFeeAmount",
 				"source_mapping": {
-					"start": 5215,
+					"start": 5218,
 					"length": 87,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -10610,7 +10610,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -10863,7 +10863,7 @@
 				"name": "initEscrow",
 				"source_mapping": {
 					"start": 1661,
-					"length": 476,
+					"length": 479,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
 					"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -10890,7 +10890,7 @@
 					],
 					"starting_column": 5,
 					"ending_column": 6,
-					"_ext_source_hash": "9d0efc369842c583591ba894ce0a5533"
+					"_ext_source_hash": "827e3f8bbb04e049db460a865de82dbb"
 				},
 				"type_specific_fields": {
 					"parent": {
@@ -10898,7 +10898,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -11150,7 +11150,7 @@
 				"type": "function",
 				"name": "getEscrowContractAddress",
 				"source_mapping": {
-					"start": 4343,
+					"start": 4346,
 					"length": 103,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -11172,7 +11172,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -11424,7 +11424,7 @@
 				"type": "function",
 				"name": "getAllDeposits",
 				"source_mapping": {
-					"start": 4452,
+					"start": 4455,
 					"length": 97,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -11446,7 +11446,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -11698,7 +11698,7 @@
 				"type": "function",
 				"name": "hasSellerApproved",
 				"source_mapping": {
-					"start": 4730,
+					"start": 4733,
 					"length": 171,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -11724,7 +11724,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -11976,7 +11976,7 @@
 				"type": "function",
 				"name": "hasEscrowExpired",
 				"source_mapping": {
-					"start": 5518,
+					"start": 5521,
 					"length": 182,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -12002,7 +12002,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -12254,7 +12254,7 @@
 				"type": "function",
 				"name": "endEscrow",
 				"source_mapping": {
-					"start": 3223,
+					"start": 3226,
 					"length": 95,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -12276,7 +12276,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -12528,7 +12528,7 @@
 				"type": "function",
 				"name": "hasBuyerApproved",
 				"source_mapping": {
-					"start": 4555,
+					"start": 4558,
 					"length": 169,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -12554,7 +12554,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -12879,7 +12879,7 @@
 				"type": "function",
 				"name": "totalEscrowBalance",
 				"source_mapping": {
-					"start": 5407,
+					"start": 5410,
 					"length": 105,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -12901,7 +12901,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -13226,7 +13226,7 @@
 				"type": "function",
 				"name": "hasBuyerCancelled",
 				"source_mapping": {
-					"start": 4907,
+					"start": 4910,
 					"length": 147,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -13251,7 +13251,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -13503,7 +13503,7 @@
 				"type": "function",
 				"name": "depositToEscrow",
 				"source_mapping": {
-					"start": 2143,
+					"start": 2146,
 					"length": 295,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -13529,7 +13529,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -13781,7 +13781,7 @@
 				"type": "function",
 				"name": "getSellerAmount",
 				"source_mapping": {
-					"start": 5308,
+					"start": 5311,
 					"length": 93,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -13803,7 +13803,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -14055,7 +14055,7 @@
 				"type": "function",
 				"name": "getBlockNumber",
 				"source_mapping": {
-					"start": 5706,
+					"start": 5709,
 					"length": 92,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -14077,7 +14077,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
@@ -14329,7 +14329,7 @@
 				"type": "function",
 				"name": "getEscrowID",
 				"source_mapping": {
-					"start": 4148,
+					"start": 4151,
 					"length": 85,
 					"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 					"filename_relative": "contracts/Escrow.sol",
@@ -14351,7 +14351,7 @@
 						"name": "Escrow",
 						"source_mapping": {
 							"start": 639,
-							"length": 5864,
+							"length": 5867,
 							"filename_used": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",
 							"filename_relative": "contracts/Escrow.sol",
 							"filename_absolute": "/Users/depthhoar/Documents/Programming/eattheblocks/bootcamp/escrowProj/escrow-sol/contracts/Escrow.sol",

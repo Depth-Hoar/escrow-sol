@@ -71,7 +71,6 @@ contract Escrow {
         uint256 _blockNum
     ) public onlyEscrowOwner {
         require((_seller != msg.sender) && (_buyer != msg.sender));
-        escrowID += 1;
         seller = _seller;
         buyer = _buyer;
         feePercent = _feePercent;
