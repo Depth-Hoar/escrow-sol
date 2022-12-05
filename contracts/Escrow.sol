@@ -98,7 +98,7 @@ contract Escrow {
         if (sellerApproval && buyerApproval) {
             escrowState = EscrowState.serviceApproved;
             fee();
-            payOutFromEscrow();
+            _payOutFromEscrow();
             emit ServicePayment(block.number, address(this).balance);
         }
     }
@@ -115,17 +115,17 @@ contract Escrow {
         }
     }
 
-    function endEscrow() public ifApprovedOrCancelled onlyEscrowOwner {
+    function endEscrow() external ifApprovedOrCancelled onlyEscrowOwner {
         killEscrow();
     }
 
     // private and internal
     // TODO add logic to decide wether to destroy or not boolean
-    function killEscrow() internal {
+    function killEscrow() private {
         selfdestruct(payable(escrowOwner));
     }
 
-    function payOutFromEscrow() private {
+    function _payOutFromEscrow() private {
         balances[buyer] = balances[buyer] - address(this).balance;
         balances[seller] = balances[seller] + address(this).balance;
         escrowState = EscrowState.escrowComplete;

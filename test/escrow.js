@@ -1,7 +1,6 @@
 const { expect } = require('chai');
 const { ethers } = require('hardhat');
-const hre = require("hardhat");
-const { escrowJson } = require('./escrowJson');
+const escrowJson = require('../artifacts/contracts/Escrow.sol/Escrow.json')
 
 describe('Factory', function () {
 
@@ -28,8 +27,8 @@ describe('Escrow', function () {
     await factory.connect(escrowOwner).createContract();
     await factory.connect(escrowOwner).createContract();
     const allEscrowContracts = await factory.getAllContracts();
-    escrow1 = new ethers.Contract(allEscrowContracts[0], escrowJson, escrowOwner);
-    escrow2 = new ethers.Contract(allEscrowContracts[1], escrowJson, escrowOwner);
+    escrow1 = new ethers.Contract(allEscrowContracts[0], escrowJson['abi'], escrowOwner);
+    escrow2 = new ethers.Contract(allEscrowContracts[1], escrowJson['abi'], escrowOwner);
     await escrow1.deployed();
     await escrow2.deployed();
     await escrow1.connect(escrowOwner).initEscrow(seller.address, buyer.address, 10, 100000000);
@@ -80,6 +79,7 @@ describe('Escrow', function () {
     await escrow1.connect(buyer).depositToEscrow({value: ethers.utils.parseEther('10')});
     await escrow1.connect(seller).cancelEscrow();
     await escrow1.connect(buyer).cancelEscrow();
+    await escrow1.connect(externalWallet).cancelEscrow();
     endEscrow = escrow1.connect(externalWallet).endEscrow();
     await expect(endEscrow).to.revertedWith('only escrow owner');
 	});
