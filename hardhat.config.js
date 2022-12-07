@@ -18,6 +18,10 @@ module.exports = {
   solidity: "0.8.15",
   defaultNetwork: "hardhat",
   networks: {
+    // hardhat: {
+    //   gas: 2100000,
+    //   gasPrice: 8000000000
+    // },
     goerli: {
       url: `https://eth-goerli.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`,
       accounts: [`0x${privateKey}`],

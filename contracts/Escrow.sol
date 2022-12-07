@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.15;
 
+import "hardhat/console.sol";
+
 // makes new escrow contracts
 contract Factory {
     address[] public allEscrowContracts;
@@ -89,7 +91,7 @@ contract Escrow {
         emit Deposit(msg.sender, msg.value);
     }
 
-    function approveEscrow() public {
+    function approveEscrow() public onlyBuyerOrSeller {
         if (msg.sender == seller) {
             sellerApproval = true;
         } else if (msg.sender == buyer) {
@@ -97,13 +99,13 @@ contract Escrow {
         }
         if (sellerApproval && buyerApproval) {
             escrowState = EscrowState.serviceApproved;
-            fee();
+            _fee();
             _payOutFromEscrow();
             emit ServicePayment(block.number, address(this).balance);
         }
     }
 
-    function cancelEscrow() public checkBlockNumber {
+    function cancelEscrow() public checkBlockNumber onlyBuyerOrSeller {
         if (msg.sender == seller) {
             sellerCancel = true;
         } else if (msg.sender == buyer) {
@@ -111,17 +113,16 @@ contract Escrow {
         }
         if (sellerCancel && buyerCancel) {
             escrowState = EscrowState.escrowCancelled;
-            refund();
+            _refund();
         }
     }
 
-    function endEscrow() external ifApprovedOrCancelled onlyEscrowOwner {
-        killEscrow();
+    function endEscrow() public ifApprovedOrCancelled onlyEscrowOwner {
+        _killEscrow();
     }
 
     // private and internal
-    // TODO add logic to decide wether to destroy or not boolean
-    function killEscrow() private {
+    function _killEscrow() private {
         selfdestruct(payable(escrowOwner));
     }
 
@@ -130,16 +131,19 @@ contract Escrow {
         balances[seller] = balances[seller] + address(this).balance;
         escrowState = EscrowState.escrowComplete;
         sellerAmount = address(this).balance;
+        //slither-disable-next-line arbitrary-send-eth
         payable(seller).transfer(address(this).balance);
     }
 
-    function fee() private {
-        uint256 totalFee = address(this).balance * (feePercent / 100);
+    function _fee() private {
+        uint256 totalFee = (address(this).balance / 100) *
+            ((100 * feePercent) / 100);
         feeAmount = totalFee;
+        //slither-disable-next-line arbitrary-send-eth
         payable(escrowOwner).transfer(totalFee);
     }
 
-    function refund() private {
+    function _refund() private {
         payable(buyer).transfer(address(this).balance);
     }
 
@@ -215,6 +219,13 @@ contract Escrow {
     }
 
     // modifiers
+    modifier onlyBuyerOrSeller() {
+        require(
+            (msg.sender == buyer) || (msg.sender == seller),
+            "only buyer or seller"
+        );
+        _;
+    }
     modifier onlyBuyer() {
         require(msg.sender == buyer, "only buyer");
         _;
