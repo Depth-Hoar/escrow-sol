@@ -72,7 +72,16 @@ contract Escrow {
         uint256 _feePercent,
         uint256 _blockNum
     ) public onlyEscrowOwner {
-        require((_seller != msg.sender) && (_buyer != msg.sender));
+        require(
+            (_seller != msg.sender) && (_buyer != msg.sender),
+            "escrow owner can not be buyer or seller"
+        );
+        require(_seller != _buyer, "buyer and seller can not be the same");
+        require(
+            (_feePercent >= 0) && (_feePercent <= 100),
+            "fee percent cannot be less than 0 or greater than 100"
+        );
+        require(_blockNum > block.number, "choose a higher block number");
         seller = _seller;
         buyer = _buyer;
         feePercent = _feePercent;
@@ -118,6 +127,7 @@ contract Escrow {
     }
 
     function endEscrow() public ifApprovedOrCancelled onlyEscrowOwner {
+        payable(escrowOwner).transfer(address(this).balance);
         _killEscrow();
     }
 
@@ -131,7 +141,6 @@ contract Escrow {
         balances[seller] = balances[seller] + address(this).balance;
         escrowState = EscrowState.escrowComplete;
         sellerAmount = address(this).balance;
-        //slither-disable-next-line arbitrary-send-eth
         payable(seller).transfer(address(this).balance);
     }
 
@@ -139,7 +148,6 @@ contract Escrow {
         uint256 totalFee = (address(this).balance / 100) *
             ((100 * feePercent) / 100);
         feeAmount = totalFee;
-        //slither-disable-next-line arbitrary-send-eth
         payable(escrowOwner).transfer(totalFee);
     }
 
