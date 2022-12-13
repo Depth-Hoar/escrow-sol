@@ -7,13 +7,13 @@
   },
   "5": {
     "factory": {
-      "address": "0xCEd5BBAb616b5aC169CB33D2a3ECca42F47efBf1"
+      "address": "0x3e8b76475677fFfEDbc6209109aE7b4612919305"
     },
     "explorerURL": "https://goerli.etherscan.io"
   },
   "2022": {
     "factory": {
-      "address": "0xc2a88b3BeBf2E767ea982c8d5108c6f99B5Cd5Da"
+      "address": "0xF3b5d764a53a07770CED82Cb021d3400cB8B4dB5"
     },
     "explorerURL": "https://testnet.edgscan.live"
   }
