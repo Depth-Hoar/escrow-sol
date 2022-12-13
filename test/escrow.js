@@ -197,14 +197,6 @@ describe('Escrow', function () {
       await expect(sellerCancel).to.be.revertedWith('escrow time has ended');
     });
 
-    it('only buyer can deposit to escrow', async function() {
-      ownerDeposit = escrow1.connect(escrowOwner).depositToEscrow({value: parseEth(10)});
-      externalDeposit = escrow1.connect(externalWallet).depositToEscrow({value: parseEth(10)});
-      sellerCancel = escrow2.connect(buyer).cancelEscrow();
-      // await expect(buyerCancel).to.be.revertedWith('escrow time has ended');
-      // await expect(sellerCancel).to.be.revertedWith('escrow time has ended');
-    });
-
     it('ending the escrow destroys the escrow', async function() {
       await escrow1.connect(buyer).depositToEscrow({value: parseEth(10)});
       await escrow1.connect(seller).cancelEscrow();
