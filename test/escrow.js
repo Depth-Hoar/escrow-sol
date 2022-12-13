@@ -33,12 +33,21 @@ describe('Escrow', function () {
       await factory.connect(escrowOwner).createContract();
       const allEscrowContracts = await factory.getAllContracts();
       escrow1 = new ethers.Contract(allEscrowContracts[0], escrowJson['abi'], escrowOwner);
+      escrow2 = new ethers.Contract(allEscrowContracts[1], escrowJson['abi'], escrowOwner);
       await escrow1.deployed();
+      await escrow2.deployed();
     });
 
     it('escrow owner can NOT be the buyer or the seller', async function() {
-      ownerIsSeller= escrow1.connect(escrowOwner).initEscrow(escrowOwner.address, buyer.address, 20, 1000);
-      ownerIsBuyer= escrow1.connect(escrowOwner).initEscrow(seller.address, escrowOwner.address, 20, 1000);
+      ownerIsSeller = escrow1.connect(escrowOwner).initEscrow(escrowOwner.address, buyer.address, 20, 1000);
+      ownerIsBuyer = escrow1.connect(escrowOwner).initEscrow(seller.address, escrowOwner.address, 20, 1000);
+      await expect(ownerIsSeller).to.be.revertedWith('escrow owner can not be buyer or seller');
+      await expect(ownerIsBuyer).to.be.revertedWith('escrow owner can not be buyer or seller');
+    });
+
+    it('escrow owner can NOT be the buyer or the seller', async function() {
+      ownerIsSeller = escrow1.connect(escrowOwner).initEscrow(escrowOwner.address, buyer.address, 20, 1000);
+      ownerIsBuyer = escrow1.connect(escrowOwner).initEscrow(seller.address, escrowOwner.address, 20, 1000);
       await expect(ownerIsSeller).to.be.revertedWith('escrow owner can not be buyer or seller');
       await expect(ownerIsBuyer).to.be.revertedWith('escrow owner can not be buyer or seller');
     });
@@ -52,6 +61,13 @@ describe('Escrow', function () {
       currentBlockNumber = await escrow1.getBlockNumber();
       initCurrentBlock = escrow1.connect(escrowOwner).initEscrow(seller.address, buyer.address, 20, currentBlockNumber);
       await expect(initCurrentBlock).to.be.revertedWith('choose a higher block number');
+    });
+
+    it('buyer and seller addresses can not be smart contracts', async function() {
+      contractSeller = escrow1.connect(escrowOwner).initEscrow(escrow2.address, buyer.address, 20, 1000);
+      contractBuyer = escrow1.connect(escrowOwner).initEscrow(seller.address, escrow2.address, 20, 1000);
+      await expect(contractSeller).to.be.revertedWith('can not be contract addresses');
+      await expect(contractBuyer).to.be.revertedWith('can not be contract addresses');
     });
   
   });
@@ -150,6 +166,8 @@ describe('Escrow', function () {
     it('external wallet should NOT be able to approve escrow', async function() {
       await escrow1.connect(buyer).depositToEscrow({value: parseEth(10)});
       await escrow1.connect(seller).approveEscrow()
+      code = await escrow1.address.code;
+      console.log
       state = await escrow1.checkEscrowStatus();
       expect(state).to.equal(2); // buyer deposited
       externalApprove = escrow1.connect(externalWallet).approveEscrow()
@@ -177,6 +195,14 @@ describe('Escrow', function () {
       sellerCancel = escrow2.connect(buyer).cancelEscrow();
       await expect(buyerCancel).to.be.revertedWith('escrow time has ended');
       await expect(sellerCancel).to.be.revertedWith('escrow time has ended');
+    });
+
+    it('only buyer can deposit to escrow', async function() {
+      ownerDeposit = escrow1.connect(escrowOwner).depositToEscrow({value: parseEth(10)});
+      externalDeposit = escrow1.connect(externalWallet).depositToEscrow({value: parseEth(10)});
+      sellerCancel = escrow2.connect(buyer).cancelEscrow();
+      // await expect(buyerCancel).to.be.revertedWith('escrow time has ended');
+      // await expect(sellerCancel).to.be.revertedWith('escrow time has ended');
     });
 
     it('ending the escrow destroys the escrow', async function() {

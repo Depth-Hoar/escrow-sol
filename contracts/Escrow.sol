@@ -82,6 +82,10 @@ contract Escrow {
             "fee percent cannot be less than 0 or greater than 100"
         );
         require(_blockNum > block.number, "choose a higher block number");
+        require(
+            (_seller.code.length == 0) && (_buyer.code.length == 0),
+            "can not be contract addresses"
+        );
         seller = _seller;
         buyer = _buyer;
         feePercent = _feePercent;
