@@ -133,7 +133,7 @@ const NavBar = ({ blockchain }) => {
           {account ? 
             <Typography 
               underline="none"
-              sx={{ pl:2 }}
+              sx={{ pl:2, pr:5 }}
             >
               <Link 
                 href={config[chainID] ? `${config[chainID].explorerURL}/address/${account}` : '#'}
@@ -144,7 +144,7 @@ const NavBar = ({ blockchain }) => {
               </Link>
               <Blockies
                 seed={account}
-                size={6}
+                size={10}
                 scale={3}
                 color='#FF3B80'
                 bgColor='#161616'
