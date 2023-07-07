@@ -111,7 +111,7 @@ const NavBar = ({ blockchain }) => {
         </Typography>
         <div>
         <Select id='networks' value={config[chainID] ? `0x${chainID.toString(16).toUpperCase()}` : `0`} onChange={networkHandler}>
-            <MenuItem value="0x7E6" >Edgeware</MenuItem>
+            <MenuItem value="0x7E5" >Edgeware</MenuItem>
             <MenuItem value="0x7E6" >Beresheet</MenuItem>
             <MenuItem value="0x5" >Goerli</MenuItem>
             <MenuItem value="0x7A69" >Local Host</MenuItem>
