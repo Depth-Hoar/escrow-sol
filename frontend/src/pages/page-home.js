@@ -27,7 +27,7 @@ function Home({ blockchain }) {
   const newEscrow = async () => {
     try {
       await blockchain.factory.createContract();
-    } 
+    }
     catch (error) {
       showError(error);
     }
@@ -37,7 +37,7 @@ function Home({ blockchain }) {
   function addNumber(item, index, array) {
     array[index] = `${index}: ${item}`;
   }
-  
+  g
   useEffect(() => {
     (async () => {
       const allEscrows = await blockchain.factory.getAllContracts();
@@ -46,7 +46,7 @@ function Home({ blockchain }) {
       setEscrows(reloadEscrows.reverse());
     })();
   }, [blockchain]);
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const loadEscrow = escrow;
@@ -54,7 +54,7 @@ function Home({ blockchain }) {
     const signer = provider.getSigner();
     const newEscrow = new ethers.Contract(loadEscrow, EscrowArtifact, signer);
     array[0] = newEscrow;
-    navigate('/contract', {replace: false});
+    navigate('/contract', { replace: false });
   }
 
   return (
@@ -62,96 +62,96 @@ function Home({ blockchain }) {
       <div className="App">
         <header className="App-header">
           <Typography variant="h3" p={3} color="common.white">
-              Escrow Decentralized Application
+            Escrow Decentralized Application
           </Typography>
           <Box sx={{ minHeight: 377 }} p={10}>
             <Masonry columns={2} spacing={5}>
               <Box sx={{ minHeight: 377 }}>
-                <Typography 
+                <Typography
                   variant='h5'
-                  sx={{ pb: 5}}
+                  sx={{ pb: 5 }}
                   color="common.white">
                   Create a new Escrow Contract
                 </Typography>
-                <Paper  elevation={3} sx={{ p:4, pl:10, pr:10 }}>
+                <Paper elevation={3} sx={{ p: 4, pl: 10, pr: 10 }}>
                   <Typography>
                     The address which creates the new Escrow contract is the owner of the contract. This address is responsible for correctly initializing the buyer and seller addresses as well as resolve disputes.
                   </Typography>
                 </Paper>
-                <ExpandMore color="primary"/>
-                <Paper  elevation={3} sx={{ p:4, pl:10, pr:10 }}>
+                <ExpandMore color="primary" />
+                <Paper elevation={3} sx={{ p: 4, pl: 10, pr: 10 }}>
                   <Typography>
                     The buyer can independently deposit ethers into the escrow any number of times.
                   </Typography>
                 </Paper>
-                <ExpandMore sx={{paddingRight:20, align: 'left'}} color="primary" />
-                <ExpandMore sx={{paddingLeft:20, align: 'right'}} color="primary" />
+                <ExpandMore sx={{ paddingRight: 20, align: 'left' }} color="primary" />
+                <ExpandMore sx={{ paddingLeft: 20, align: 'right' }} color="primary" />
                 <Masonry columns={2} >
-                  <Paper  elevation={3} sx={{ padding:2, align: 'left'}}>
+                  <Paper elevation={3} sx={{ padding: 2, align: 'left' }}>
                     <Typography>
                       Both the buyer and the seller need to press the Approve button to get the deal approved. Once both have approved, the escrow will pay out the decided percentage of the contract deposits to the fee and the remaining to the seller automatically.
                     </Typography>
                   </Paper>
-                  <Paper  elevation={3} sx={{ padding:2, align: 'right'}}>
+                  <Paper elevation={3} sx={{ padding: 2, align: 'right' }}>
                     <Typography>
                       In case both the buyer and seller decide not to go ahead with the escrow, both need to press the Cancel button to cancel the escrow. No fee will be charged by the owner in this case and the entire buyer deposit will be transferred back to the buyer.
                     </Typography>
                   </Paper>
                 </Masonry>
-                <ExpandMore sx={{paddingRight:20, align: 'left'}} color="primary" />
-                <ExpandMore sx={{paddingLeft:20, align: 'right'}} color="primary" />
-                <Paper elevation={3} sx={{p:4, align: 'left', display: 'flex'}}>
+                <ExpandMore sx={{ paddingRight: 20, align: 'left' }} color="primary" />
+                <ExpandMore sx={{ paddingLeft: 20, align: 'right' }} color="primary" />
+                <Paper elevation={3} sx={{ p: 4, align: 'left', display: 'flex' }}>
                   <Typography>
                     Neither the creators of the escrow platform nor the owner will have any authority to launder with the money deposited into the smart contract. But they are no way accountable for any monetary losses incurred.
                   </Typography>
                 </Paper>
-                <ExpandMore color="primary"/>
+                <ExpandMore color="primary" />
                 <Box>
                   <Button
-                    variant='contained' 
-                    onClick={newEscrow} 
+                    variant='contained'
+                    onClick={newEscrow}
                   >
                     Create New Escrow Contract
                   </Button>
                 </Box>
               </Box>
-            <Box sx={{ minHeight: 377 }}>
-              <Typography 
-                variant='h5'
-                sx={{pb:3}}
-                color="common.white"
-              >
-                Load an existing Escrow Contract
-              </Typography>
-              <form noValidate autoComplete='off' onSubmit={handleSubmit} >
-                <TextField 
-                  onChange={(e) => setEscrow(e.target.value)}
-                  sx={{ m: 1, width: '42ch' }}
-                  id="outlined-basic" 
-                  label="Escrow Address" 
-                  variant="outlined"
-                  required
+              <Box sx={{ minHeight: 377 }}>
+                <Typography
+                  variant='h5'
+                  sx={{ pb: 3 }}
+                  color="common.white"
+                >
+                  Load an existing Escrow Contract
+                </Typography>
+                <form noValidate autoComplete='off' onSubmit={handleSubmit} >
+                  <TextField
+                    onChange={(e) => setEscrow(e.target.value)}
+                    sx={{ m: 1, width: '42ch' }}
+                    id="outlined-basic"
+                    label="Escrow Address"
+                    variant="outlined"
+                    required
                   />
-                  <Box sx={{p:1, pb:2}}>
-                    <Button 
+                  <Box sx={{ p: 1, pb: 2 }}>
+                    <Button
                       type='submit'
                       variant='contained'>
                       Load Escrow Contract
                     </Button>
                   </Box>
-              </form>
-              <Typography variant='h6' color="common.white">
-                All escrows created on this platform:
-              </Typography>
-              {escrows.map((escrows) => (
-            <Typography key={escrows} color="common.white">
-            {/* TODO add key for mapping */}
-                {escrows}
-              </Typography>
-              ))}
-            </Box>
-          </Masonry>
-        </Box>
+                </form>
+                <Typography variant='h6' color="common.white">
+                  All escrows created on this platform:
+                </Typography>
+                {escrows.map((escrows) => (
+                  <Typography key={escrows} color="common.white">
+                    {/* TODO add key for mapping */}
+                    {escrows}
+                  </Typography>
+                ))}
+              </Box>
+            </Masonry>
+          </Box>
         </header>
       </div>
     </div>

@@ -16,5 +16,11 @@
       "address": "0xF3b5d764a53a07770CED82Cb021d3400cB8B4dB5"
     },
     "explorerURL": "https://testnet.edgscan.live"
+  },
+  "2021": {
+    "factory": {
+      "address": "0x9A3c24aF6ed8Ac796166cF9c6808859895d89e66"
+    },
+    "explorerURL": "https://testnet.edgscan.live"
   }
 }

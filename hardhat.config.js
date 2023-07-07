@@ -2,6 +2,7 @@ require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 const privateKey = process.env.PRIVATE_KEY || "";
 const berePrivateKey = process.env.BERESHEET_PRIVATE_KEY || "";
+const edgePrivateKey = process.env.EDGEWARE_PRIVATE_KEY || "";
 
 
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
@@ -30,6 +31,11 @@ module.exports = {
       url: `https://beresheet-evm.jelliedowl.net`,
       chainId: 2022,
       accounts: [berePrivateKey],
+    },
+    edgeware: {
+      url: `https://mainnet2.edgewa.re/evm`,
+      chainId: 2021,
+      accounts: [edgePrivateKey],
     },
   }
 }
