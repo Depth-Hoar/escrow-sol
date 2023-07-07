@@ -37,7 +37,7 @@ function Home({ blockchain }) {
   function addNumber(item, index, array) {
     array[index] = `${index}: ${item}`;
   }
-  g
+  
   useEffect(() => {
     (async () => {
       const allEscrows = await blockchain.factory.getAllContracts();
